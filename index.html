@@ -629,6 +629,77 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
   </div>
 </section>
 
+<!-- VOLUNTEER / BECOME A TUTOR -->
+<section id="volunteer" style="background:linear-gradient(160deg,#eaf6fb 0%,var(--cream) 100%);display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;">
+  <div class="reveal-left">
+    <div class="section-eyebrow">Join the Team</div>
+    <div class="accent-line"></div>
+    <h2 class="section-title">Share What<br>You Know</h2>
+    <p class="section-sub">Become a volunteer tutor and help students in your community — while building real skills in teaching, communication, and leadership.</p>
+    <ul class="checklist">
+      <li>Flexible hours — tutor on your own schedule</li>
+      <li>Build your resume with verified volunteer hours</li>
+      <li>Deepen your own understanding by teaching</li>
+      <li>Make a real difference in a student's life</li>
+    </ul>
+  </div>
+  <div class="reveal-right">
+    <div class="form-card">
+      <h3>Apply to Tutor</h3>
+
+      <!-- FORM FIELDS -->
+      <div id="vol-form-wrap">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="v-first">First Name</label>
+            <input id="v-first" name="First Name" type="text" placeholder="Jordan" required>
+          </div>
+          <div class="form-group">
+            <label for="v-last">Last Name</label>
+            <input id="v-last" name="Last Name" type="text" placeholder="Lee" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="v-email">Email Address</label>
+          <input id="v-email" name="Email" type="email" placeholder="jordan@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="v-school">Current School / Grade</label>
+          <input id="v-school" name="School" type="text" placeholder="e.g. Westview High School, 11th Grade">
+        </div>
+        <div class="form-group">
+          <label for="v-subject">Subject(s) You Can Teach</label>
+          <input id="v-subject" name="Subjects" type="text" placeholder="e.g. Algebra 2, Chemistry">
+        </div>
+
+        <!-- Validation error -->
+        <div class="form-error" id="vol-form-error"></div>
+
+        <button
+          id="vol-submit-btn"
+          class="btn btn-primary"
+          style="width:100%;justify-content:center;padding:14px;font-size:.95rem;margin-top:.8rem;background:linear-gradient(135deg,var(--yellow),#f0a500);box-shadow:0 4px 24px rgba(255,191,71,.4);color:var(--blue-deep);font-weight:600;"
+          onclick="handleVolunteerSubmit(event)"
+        >
+          <span id="vol-btn-label">Apply Now →</span>
+          <span id="vol-btn-spinner" style="display:none">Sending…</span>
+        </button>
+        <p style="text-align:center;font-size:.74rem;color:var(--text-light);margin-top:.8rem">
+          We'll reach out within 3 business days.
+        </p>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div id="vol-form-success" style="display:none;text-align:center;padding:2rem 1rem;">
+        <div style="font-size:2.8rem;margin-bottom:1rem">🌟</div>
+        <div style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--blue-deep);margin-bottom:.6rem">Application Received!</div>
+        <p style="font-size:.9rem;color:var(--text-mid);line-height:1.6">Thanks for wanting to give back! We'll review your application and be in touch within <strong>3 business days</strong>.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+   
 <!-- FOOTER -->
 <footer>
   <div class="footer-top" id="footer-top"></div>
@@ -872,6 +943,75 @@ window.addEventListener('scroll',()=>{
 // Page fade in
 document.body.style.opacity='0';document.body.style.transition='opacity .5s ease';
 window.addEventListener('load',()=>document.body.style.opacity='1');
+
+// ── VOLUNTEER FORM SUBMISSION ────────────────────────────────
+async function handleVolunteerSubmit(e) {
+  e.preventDefault();
+
+  const firstName = document.getElementById('v-first').value.trim();
+  const lastName  = document.getElementById('v-last').value.trim();
+  const email     = document.getElementById('v-email').value.trim();
+  const school    = document.getElementById('v-school').value.trim();
+  const subject   = document.getElementById('v-subject').value.trim();
+  const errBox    = document.getElementById('vol-form-error');
+
+  const errors = [];
+  if (!firstName) errors.push('First name is required.');
+  if (!lastName)  errors.push('Last name is required.');
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push('A valid email is required.');
+
+  if (errors.length) {
+    errBox.textContent   = errors.join('  ');
+    errBox.style.display = 'block';
+    return;
+  }
+  errBox.style.display = 'none';
+
+  // ── Uses same Formspree endpoint — submissions will be labeled
+  //    differently since they include different fields.
+  //    Or set a separate endpoint here if you want a different inbox.
+  const endpoint = SITE_CONFIG.formspreeEndpoint;
+
+  if (!endpoint) {
+    // Demo mode
+    document.getElementById('vol-form-wrap').style.display    = 'none';
+    document.getElementById('vol-form-success').style.display = 'block';
+    return;
+  }
+
+  const btn = document.getElementById('vol-submit-btn');
+  document.getElementById('vol-btn-label').style.display   = 'none';
+  document.getElementById('vol-btn-spinner').style.display = 'inline';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(endpoint, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Type':        'Volunteer Application',
+        'First Name':  firstName,
+        'Last Name':   lastName,
+        'Email':       email,
+        'School':      school,
+        'Subjects':    subject,
+      }),
+    });
+
+    if (res.ok) {
+      document.getElementById('vol-form-wrap').style.display    = 'none';
+      document.getElementById('vol-form-success').style.display = 'block';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch (err) {
+    errBox.textContent   = 'Something went wrong — please try again.';
+    errBox.style.display = 'block';
+    document.getElementById('vol-btn-label').style.display   = 'inline';
+    document.getElementById('vol-btn-spinner').style.display = 'none';
+    btn.disabled = false;
+  }
+}
 </script>
 </body>
 </html>
