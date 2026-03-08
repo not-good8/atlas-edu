@@ -22,15 +22,11 @@ const SITE_CONFIG = {
   subheadline:  "Atlas Edu connects students with dedicated volunteer tutors — building a community where knowledge flows freely, and no student is ever left behind.",
   foundedYear:  "2020",
 
-  /* ── FORMSPREE ────────────────────────────────────────
-     1. Go to formspree.io and sign up (free)
-     2. Click "New Form" → name it "Tutoring Request"
-     3. Copy your endpoint (looks like formspree.io/f/xxxxxxxx)
-     4. Paste the full URL below, replacing the placeholder
-     Leave as "" to use demo mode (shows success screen but
-     doesn't actually send — useful for testing the design)
+  /* ── GOOGLE APPS SCRIPT ENDPOINTS ────────────────────────
+     These point to your Google Sheets via Apps Script.
+     To update, replace the URL below with your own script URL.
   ─────────────────────────────────────────────────────── */
-  formspreeEndpoint:          "https://formspree.io/f/mvzwgjeq",  // ← Student tutoring requests
+  formEndpoint:               "https://script.google.com/macros/s/AKfycbyxOH4S33FWjoOy21GRov45IY6igB2hXHuu1PwpMMHYEL3TjLerAth9r5opsg4eByf2/exec",  // ← Student tutoring requests
   volunteerFormspreeEndpoint: "https://formspree.io/f/mreybnwq",  // ← Volunteer applications
 
   /* ── HERO STATS (3 pills below the CTA buttons) ──────── */
@@ -748,11 +744,11 @@ Object.entries(SITE_CONFIG.footerLinks).forEach(([title, links]) => {
 });
 footerTop.innerHTML = fHtml;
 
-/* ── FORM SUBMISSION WITH FORMSPREE ────────────────────────────
-   Validates all fields, POSTs to Formspree as JSON, then
-   swaps the form for a success message on completion.
-   If no endpoint is configured, shows the success screen
-   in demo mode (useful for testing the design locally).
+/* ── STUDENT FORM — Google Apps Script ─────────────────────────
+   Uses no-cors mode + URLSearchParams so the Apps Script
+   doPost() receives a plain form-encoded body it can parse
+   with e.parameter. Since no-cors returns an opaque response
+   we optimistically show success after the fetch resolves.
 ─────────────────────────────────────────────────────────────── */
 async function handleFormSubmit(e) {
   e.preventDefault();
@@ -766,26 +762,23 @@ async function handleFormSubmit(e) {
 
   // ── Client-side validation ──
   const errors = [];
-  if (!firstName)                                    errors.push('First name is required.');
-  if (!lastName)                                     errors.push('Last name is required.');
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push('A valid email is required.');
-  if (!grade)                                        errors.push('Please select a grade level.');
-  if (!subject)                                      errors.push('Please select a subject.');
+  if (!firstName)                                              errors.push('First name is required.');
+  if (!lastName)                                               errors.push('Last name is required.');
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))   errors.push('A valid email is required.');
+  if (!grade)                                                  errors.push('Please select a grade level.');
+  if (!subject)                                                errors.push('Please select a subject.');
 
   if (errors.length) {
-    errBox.textContent  = errors.join('  ');
+    errBox.textContent   = errors.join('  ');
     errBox.style.display = 'block';
     return;
   }
   errBox.style.display = 'none';
 
-  const endpoint = SITE_CONFIG.formspreeEndpoint;
+  const endpoint = SITE_CONFIG.formEndpoint;
 
-  // ── Demo mode: no endpoint set ──
-  if (!endpoint) {
-    showSuccess();
-    return;
-  }
+  // ── Demo mode: no endpoint configured ──
+  if (!endpoint) { showSuccess(); return; }
 
   // ── Disable button & show spinner ──
   const btn = document.getElementById('submit-btn');
@@ -794,25 +787,27 @@ async function handleFormSubmit(e) {
   btn.disabled = true;
 
   try {
-    const res = await fetch(endpoint, {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        'First Name':  firstName,
-        'Last Name':   lastName,
-        'Email':       email,
-        'Grade Level': grade,
-        'Subject':     subject,
-      }),
+    // Google Apps Script requires form-encoded body + no-cors mode
+    const formData = new URLSearchParams({
+      'First Name':  firstName,
+      'Last Name':   lastName,
+      'Email':       email,
+      'Grade Level': grade,
+      'Subject':     subject,
     });
 
-    if (res.ok) {
-      showSuccess();
-    } else {
-      throw new Error('Server error');
-    }
+    await fetch(endpoint, {
+      method: 'POST',
+      mode:   'no-cors',   // required for Apps Script — response will be opaque
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData.toString(),
+    });
+
+    // With no-cors we can't read the response status, so optimistically show success
+    showSuccess();
+
   } catch (err) {
-    errBox.textContent  = 'Something went wrong — please try again or email us directly.';
+    errBox.textContent   = 'Something went wrong — please try again or email us directly.';
     errBox.style.display = 'block';
     document.getElementById('btn-label').style.display  = 'inline';
     document.getElementById('btn-spinner').style.display = 'none';
@@ -890,7 +885,7 @@ const cntObs = new IntersectionObserver(entries => {
 },{threshold:.5});
 setTimeout(()=>document.querySelectorAll('.counter').forEach(el=>cntObs.observe(el)),200);
 
-// Toast helper (kept for any other uses)
+// Toast helper
 function showToast(msg){
   const toast=document.getElementById('toast'),parts=msg.split(' ');
   document.getElementById('toast-icon').textContent=parts[0];
