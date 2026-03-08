@@ -27,7 +27,7 @@ const SITE_CONFIG = {
      To update, replace the URL below with your own script URL.
   ─────────────────────────────────────────────────────── */
   formEndpoint:               "https://script.google.com/macros/s/AKfycbyxOH4S33FWjoOy21GRov45IY6igB2hXHuu1PwpMMHYEL3TjLerAth9r5opsg4eByf2/exec",  // ← Student tutoring requests
-  volunteerFormspreeEndpoint: "https://formspree.io/f/mreybnwq",  // ← Volunteer applications
+  volunteerEndpoint:          "https://script.google.com/macros/s/AKfycbyZM__2jQxrnlA-QBrSOaKqdATcm96G7wL8niZyPAoloKNJvzOJRTBrkmXGgDcQSnMaSg/exec",  // ← Volunteer applications
 
   /* ── HERO STATS (3 pills below the CTA buttons) ──────── */
   heroStats: [
@@ -929,7 +929,6 @@ window.addEventListener('scroll',()=>{
 });
 
 
-// ── VOLUNTEER FORM SUBMISSION ────────────────────────────────
 async function handleVolunteerSubmit(e) {
   e.preventDefault();
 
@@ -952,7 +951,7 @@ async function handleVolunteerSubmit(e) {
   }
   errBox.style.display = 'none';
 
-  const endpoint = SITE_CONFIG.volunteerFormspreeEndpoint;
+  const endpoint = SITE_CONFIG.volunteerEndpoint;
 
   if (!endpoint) {
     document.getElementById('vol-form-wrap').style.display    = 'none';
@@ -966,24 +965,24 @@ async function handleVolunteerSubmit(e) {
   btn.disabled = true;
 
   try {
-    const res = await fetch(endpoint, {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        'First Name':  firstName,
-        'Last Name':   lastName,
-        'Email':       email,
-        'School':      school,
-        'Subjects':    subject,
-      }),
+    const formData = new URLSearchParams({
+      'First Name': firstName,
+      'Last Name':  lastName,
+      'Email':      email,
+      'School':     school,
+      'Subjects':   subject,
     });
 
-    if (res.ok) {
-      document.getElementById('vol-form-wrap').style.display    = 'none';
-      document.getElementById('vol-form-success').style.display = 'block';
-    } else {
-      throw new Error('Server error');
-    }
+    await fetch(endpoint, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body:    formData.toString(),
+    });
+
+    document.getElementById('vol-form-wrap').style.display    = 'none';
+    document.getElementById('vol-form-success').style.display = 'block';
+
   } catch (err) {
     errBox.textContent   = 'Something went wrong — please try again.';
     errBox.style.display = 'block';
