@@ -30,7 +30,8 @@ const SITE_CONFIG = {
      Leave as "" to use demo mode (shows success screen but
      doesn't actually send — useful for testing the design)
   ─────────────────────────────────────────────────────── */
-  formspreeEndpoint: "https://formspree.io/f/mvzwgjeq",  // ← PASTE YOUR FORMSPREE URL HERE
+  formspreeEndpoint: "https://formspree.io/f/mvzwgjeq",
+  formspreeEndpoint1: "https://formspree.io/f/mreybnwq",// ← PASTE YOUR FORMSPREE URL HERE
                           //   e.g. "https://formspree.io/f/xpwzabcd"
 
   /* ── HERO STATS (3 pills below the CTA buttons) ──────── */
@@ -153,6 +154,7 @@ const SITE_CONFIG = {
       { label: "Subjects Offered", href: "#subjects" },
       { label: "How It Works",     href: "#how"      },
       { label: "Meet Tutors",      href: "#tutors"   },
+      { label: "Become a Tutor", href: "#volunteer" },
     ],
     "Organization": [
       { label: "About Us",       href: "#about"  },
@@ -190,7 +192,7 @@ html{scroll-behavior:smooth;font-size:16px;}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;cursor:none;}
 
 /* CURSOR */
-.cursor{width:12px;height:12px;background:var(--teal);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:multiply;}
+.cursor{width:12px;height:12px;background:var(--teal);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:mtiply;}
 .cursor-ring{width:40px;height:40px;border:1.5px solid var(--teal);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s;opacity:.55;}
 
 /* FREE BANNER */
@@ -229,7 +231,7 @@ nav.scrolled{box-shadow:0 2px 32px rgba(26,58,92,.10);}
 #hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
 .hero-content{position:relative;z-index:2;max-width:600px;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(46,196,182,.12);border:1px solid rgba(46,196,182,.25);border-radius:100px;padding:6px 16px;font-size:.82rem;font-weight:500;color:var(--teal);margin-bottom:1.5rem;opacity:0;transform:translateY(20px);animation:fadeUp .7s .3s forwards;}
-.hero-eyebrow-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite;}
+.hero-eyebrow-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pse 2s infinite;}
 .hero-headline{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.8rem,5.5vw,4.8rem);line-height:1.08;color:var(--blue-deep);letter-spacing:-1.5px;margin-bottom:1.3rem;opacity:0;transform:translateY(28px);animation:fadeUp .8s .5s forwards;}
 .hero-headline em{font-style:italic;color:var(--teal);position:relative;}
 .hero-headline em::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),transparent);border-radius:2px;}
@@ -414,6 +416,7 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
     <li><a href="#subjects">Subjects</a></li>
     <li><a href="#tutors">Tutors</a></li>
     <li><a href="#impact">Impact</a></li>
+    <li><a href="#volunteer">Volunteer</a></li>
   </ul>
   <a href="#gethelp" class="btn btn-primary">Get Free Help →</a>
 </nav>
@@ -970,7 +973,7 @@ async function handleVolunteerSubmit(e) {
   // ── Uses same Formspree endpoint — submissions will be labeled
   //    differently since they include different fields.
   //    Or set a separate endpoint here if you want a different inbox.
-  const endpoint = SITE_CONFIG.formspreeEndpoint;
+  const endpoint = SITE_CONFIG.formspreeEndpoint1;
 
   if (!endpoint) {
     // Demo mode
