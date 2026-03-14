@@ -11,205 +11,140 @@
 <script>
 /* ============================================================
    ✏️  ATLAS EDU — EASY CUSTOMIZATION CONFIG
-   Edit anything in this block to update the website.
-   No coding knowledge needed beyond this section!
    ============================================================ */
 const SITE_CONFIG = {
-
-  /* ── ORG INFO ─────────────────────────────────────────── */
   orgName:      "Atlas Edu",
   tagline:      "Guiding Students to Knowledge",
   subheadline:  "Atlas Edu connects students with dedicated volunteer tutors — building a community where knowledge flows freely, and no student is ever left behind.",
   foundedYear:  "2025",
-
-  /* ── GOOGLE APPS SCRIPT ENDPOINTS ────────────────────────
-     These point to your Google Sheets via Apps Script.
-     To update, replace the URL below with your own script URL.
-  ─────────────────────────────────────────────────────── */
-  formEndpoint:               "https://script.google.com/macros/s/AKfycbyxOH4S33FWjoOy21GRov45IY6igB2hXHuu1PwpMMHYEL3TjLerAth9r5opsg4eByf2/exec",  // ← Student tutoring requests
-  volunteerEndpoint:          "https://script.google.com/macros/s/AKfycbyZM__2jQxrnlA-QBrSOaKqdATcm96G7wL8niZyPAoloKNJvzOJRTBrkmXGgDcQSnMaSg/exec",  // ← Volunteer applications
-
-  /* ── HERO STATS (3 pills below the CTA buttons) ──────── */
+  formEndpoint:      "https://script.google.com/macros/s/AKfycbyxOH4S33FWjoOy21GRov45IY6igB2hXHuu1PwpMMHYEL3TjLerAth9r5opsg4eByf2/exec",
+  volunteerEndpoint: "https://script.google.com/macros/s/AKfycbyZM__2jQxrnlA-QBrSOaKqdATcm96G7wL8niZyPAoloKNJvzOJRTBrkmXGgDcQSnMaSg/exec",
   heroStats: [
-    { num: "100%", label: "Free, Always"   },
-    { num: "6",    label: "Expert Tutors"  },
-    { num: "10+",  label: "Subjects"       },
+    { num: "100%", label: "Free, Always"  },
+    { num: "6",    label: "Expert Tutors" },
+    { num: "10+",  label: "Subjects"      },
   ],
-
-  /* ── IMPACT COUNTERS (animated numbers section) ─────── */
   impactStats: [
-    { target: 60,  suffix: "+", label: "Students Helped"   },
-    { target: 6,    suffix: "",  label: "Volunteer Tutors"  },
-    { target: 100,  suffix: "+", label: "Tutoring Hours"    },
-    { target: 10,   suffix: "+", label: "Subjects Covered"  },
-    { target: 96,   suffix: "%", label: "Would Recommend"   },
+    { target: 60,  suffix: "+", label: "Students Helped"  },
+    { target: 6,   suffix: "",  label: "Volunteer Tutors"  },
+    { target: 100, suffix: "+", label: "Tutoring Hours"    },
+    { target: 10,  suffix: "+", label: "Subjects Covered"  },
+    { target: 96,  suffix: "%", label: "Would Recommend"   },
   ],
-
-  /* ── TUTORS ───────────────────────────────────────────
-     To ADD a tutor: copy one object, paste it at the end
-     of the array (before the ]), and fill in the fields.
-
-     Fields:
-       name  — Full name
-       role  — Short title shown on card
-       emoji — Avatar emoji
-       color — Light background for the avatar (hex/rgba)
-       tags  — Array of subject tags (short labels)
-       bio   — One sentence about them
-  ─────────────────────────────────────────────────────── */
   tutors: [
     {
-      name:  "Aneesh S.",
-      role:  "STEM & Language Tutor",
-      emoji: "🧑‍🔬",
-      color: "#dff4f8",
-      tags:  ["Chemistry", "Physics", "Computer Science", "Robotics", "Chess", "Art", "French", "Economy", "SAT Math"],
-      bio:   "Passionate about science and technology with a love for hands-on, practical learning."
+      name:"Aneesh S.", role:"STEM & Language Tutor", emoji:"🧑‍🔬", color:"#dff4f8",
+      tags:["Chemistry","Physics","Computer Science","Robotics","Chess","Art","French","Economy","SAT Math"],
+      bio:"Passionate about science and technology with a love for hands-on, practical learning.",
+      fullBio:"Aneesh is a dedicated STEM enthusiast who excels at breaking down complex topics into digestible concepts. With expertise spanning Chemistry, Physics, Computer Science, and Robotics, he brings an engineering mindset to every session. Outside of tutoring, he enjoys chess and art — a unique combination that fuels his creative problem-solving approach.",
+      availability:"Mon, Wed, Fri · Evenings", sessions:24, rating:4.9,
     },
     {
-      name:  "Abhinav V.",
-      role:  "STEM & Language Tutor",
-      emoji: "📐",
-      color: "#e8faf4",
-      tags:  ["Pre-K–Middle School Math", "Algebra 1", "Geography", "Geometry", "Chess", "Music", "SAT Math", "Spanish", "Trigonometry"],
-      bio:   "Patient and encouraging — specializes in building strong math foundations from the ground up."
+      name:"Abhinav V.", role:"STEM & Language Tutor", emoji:"📐", color:"#e8faf4",
+      tags:["Pre-K–Middle School Math","Algebra 1","Geography","Geometry","Chess","Music","SAT Math","Spanish","Trigonometry"],
+      bio:"Patient and encouraging — specializes in building strong math foundations from the ground up.",
+      fullBio:"Abhinav's superpower is patience. He meets every student exactly where they are — whether that's Pre-K addition or high school Trigonometry. He's particularly known for his ability to turn math anxiety into math confidence. When he's not tutoring, he plays chess competitively and studies music theory.",
+      availability:"Tue, Thu · Afternoons & Evenings", sessions:31, rating:4.8,
     },
     {
-      name:  "Drishti S.",
-      role:  "English & Language Tutor",
-      emoji: "📖",
-      color: "#fff8e7",
-      tags:  ["English", "Essay Writing", "Biology", "SAT English", "Spanish", "History", "Health Science"],
-      bio:   "Loves helping students find their voice in writing and develop a curiosity for life sciences."
+      name:"Drishti S.", role:"English & Language Tutor", emoji:"📖", color:"#fff8e7",
+      tags:["English","Essay Writing","Biology","SAT English","Spanish","History","Health Science"],
+      bio:"Loves helping students find their voice in writing and develop a curiosity for life sciences.",
+      fullBio:"Drishti has a gift for language and storytelling. She helps students transform rough drafts into polished essays, and brings the same clarity to Biology and Health Science. Her interdisciplinary background — combining humanities and sciences — gives her a unique perspective that students find refreshing.",
+      availability:"Mon–Fri · Flexible", sessions:19, rating:5.0,
     },
     {
-      name:  "Nikhil V.",
-      role:  "High School Math Tutor",
-      emoji: "✏️",
-      color: "#eaf2ff",
-      tags:  ["Algebra 2", "Geometry", "Trigonometry", "Physics", "SAT Math", "Economy"],
-      bio:   "Makes high school math genuinely approachable — one concept at a time."
+      name:"Nikhil V.", role:"High School Math Tutor", emoji:"✏️", color:"#eaf2ff",
+      tags:["Algebra 2","Geometry","Trigonometry","Physics","SAT Math","Economy"],
+      bio:"Makes high school math genuinely approachable — one concept at a time.",
+      fullBio:"Nikhil specializes in the high school math gauntlet — Algebra 2, Geometry, Trig — and makes each one feel less intimidating. He's known for finding the 'aha moment' for each student, using visual diagrams and real-world examples. His structured approach helps students build lasting understanding.",
+      availability:"Wed, Sat, Sun · Mornings", sessions:17, rating:4.9,
     },
     {
-      name:  "Venkat G.",
-      role:  "High School Math Tutor",
-      emoji: "📊",
-      color: "#dff4f8",
-      tags:  ["Algebra 2", "Geometry", "Trigonometry", "Physics", "SAT Math", "Economy"],
-      bio:   "Loves helping students understand mathematical concepts — one step at a time."
+      name:"Venkat G.", role:"High School Math Tutor", emoji:"📊", color:"#dff4f8",
+      tags:["Algebra 2","Geometry","Trigonometry","Physics","SAT Math","Economy"],
+      bio:"Loves helping students understand mathematical concepts — one step at a time.",
+      fullBio:"Venkat approaches math like a puzzle — and he loves sharing that curiosity with students. He's particularly strong in Physics and Economics, helping students see the mathematical backbone behind real-world systems. His calm, methodical teaching style is ideal for students who feel overwhelmed.",
+      availability:"Tue, Thu, Sat · Afternoons", sessions:22, rating:4.7,
     },
-     {
-      name:  "Nilaani V.",
-      role:  "High School Math and Science Tutor",
-      emoji: "🧪",
-      color: "#dff4f8",
-      tags:  ["Ap Bio", "High School Math", "SAT Prep"],
-      bio:   "Student interested in medicine, biology, and helping others learn science."
+    {
+      name:"Nilaani V.", role:"Math & Science Tutor", emoji:"🧪", color:"#f0eaff",
+      tags:["AP Bio","High School Math","SAT Prep"],
+      bio:"Student interested in medicine, biology, and helping others learn science.",
+      fullBio:"Nilaani is pre-med bound and passionate about making biology accessible to everyone. She specializes in AP Bio with a depth of knowledge that goes well beyond the curriculum. For SAT prep, she combines proven strategies with personalized practice — helping students maximize their scores with confidence.",
+      availability:"Mon, Wed, Fri · Afternoons", sessions:14, rating:4.8,
     },
   ],
-
-  /* ── SUBJECTS ─────────────────────────────────────────
-     To ADD a subject: copy one object and paste it
-     at the end of the array (before the ]).
-
-     Fields:
-       name   — Subject display name
-       icon   — Emoji for the card
-       color  — Light tint for icon background (rgba)
-       levels — Short descriptor (shown in small text)
-  ─────────────────────────────────────────────────────── */
   subjects: [
-    { name: "Mathematics",       icon: "➕", color: "rgba(91,164,207,0.13)",  levels: "Pre-K · Elementary · Algebra 1 · High School"  },
-    { name: "Sciences",          icon: "🔬", color: "rgba(46,196,182,0.13)",  levels: "Biology · Chemistry · Physics"                  },
-    { name: "English & Writing", icon: "📖", color: "rgba(255,191,71,0.15)",  levels: "Essays · Grammar · Literature"                  },
-    { name: "Computer Science",  icon: "💻", color: "rgba(91,164,207,0.13)",  levels: "Programming · Statistics · Robotics"            },
-    { name: "Spanish",           icon: "🇪🇸", color: "rgba(255,120,80,0.10)", levels: "Beginner · Intermediate · Conversational"        },
-    { name: "French",            icon: "🇫🇷", color: "rgba(46,196,182,0.10)", levels: "Beginner · Intermediate · Conversational"        },
-    { name: "Art",               icon: "🎨", color: "rgba(255,191,71,0.15)",  levels: "Drawing · Art History · Visual Arts"            },
-    { name: "Geography",         icon: "🌍", color: "rgba(72,187,120,0.15)", levels: "Physical Geography · Human Geography · World Regions" },
-    { name: "Chess",             icon: "♟️", color: "rgba(120,120,120,0.15)", levels: "Beginner Strategy · Tactics · Advanced Play" },
-    { name: "History",           icon: "🏛️", color: "rgba(210,140,80,0.15)", levels: "World History · U.S. History · Civics" },
-    { name: "Economics",         icon: "📈", color: "rgba(80,180,140,0.13)", levels: "Microeconomics · Macroeconomics · Personal Finance" },
-    { name: "Music",             icon: "🎵", color: "rgba(255,170,90,0.13)", levels: "Music Theory · Instruments · Composition" },
-    { name: "Health Science",    icon: "🩺", color: "rgba(255,120,120,0.13)", levels: "Anatomy · Physiology · Medical Basics" },
-    { name: "SAT Prep",          icon: "📝", color: "rgba(91,164,207,0.13)",  levels: "Math · Reading · Writing · Full Prep"           },
-     
+    { name:"Mathematics",       icon:"➕", color:"rgba(91,164,207,0.13)",  levels:"Pre-K · Elementary · Algebra 1 · High School"  },
+    { name:"Sciences",          icon:"🔬", color:"rgba(46,196,182,0.13)",  levels:"Biology · Chemistry · Physics"                  },
+    { name:"English & Writing", icon:"📖", color:"rgba(255,191,71,0.15)",  levels:"Essays · Grammar · Literature"                  },
+    { name:"Computer Science",  icon:"💻", color:"rgba(91,164,207,0.13)",  levels:"Programming · Statistics · Robotics"            },
+    { name:"Spanish",           icon:"🇪🇸",color:"rgba(255,120,80,0.10)",  levels:"Beginner · Intermediate · Conversational"       },
+    { name:"French",            icon:"🇫🇷",color:"rgba(46,196,182,0.10)",  levels:"Beginner · Intermediate · Conversational"       },
+    { name:"Art",               icon:"🎨", color:"rgba(255,191,71,0.15)",  levels:"Drawing · Art History · Visual Arts"            },
+    { name:"Geography",         icon:"🌍", color:"rgba(72,187,120,0.15)",  levels:"Physical · Human · World Regions"               },
+    { name:"Chess",             icon:"♟️", color:"rgba(120,120,120,0.15)", levels:"Beginner Strategy · Tactics · Advanced Play"    },
+    { name:"History",           icon:"🏛️",color:"rgba(210,140,80,0.15)",  levels:"World History · U.S. History · Civics"          },
+    { name:"Economics",         icon:"📈", color:"rgba(80,180,140,0.13)",  levels:"Micro · Macro · Personal Finance"               },
+    { name:"Music",             icon:"🎵", color:"rgba(255,170,90,0.13)",  levels:"Music Theory · Instruments · Composition"       },
+    { name:"Health Science",    icon:"🩺", color:"rgba(255,120,120,0.13)", levels:"Anatomy · Physiology · Medical Basics"          },
+    { name:"SAT Prep",          icon:"📝", color:"rgba(91,164,207,0.13)",  levels:"Math · Reading · Writing · Full Prep"           },
   ],
-
-  /* ── HOW IT WORKS STEPS ───────────────────────────── */
   steps: [
-    { icon: "📝", title: "Sign Up",        desc: "Fill out our quick form with your subject and availability. Takes under 2 minutes."   },
-    { icon: "🔍", title: "Get Matched",    desc: "We pair you with the perfect tutor for your subject and grade level."                  },
-    { icon: "📅", title: "Schedule",       desc: "Pick a time that works for you — flexible, online, and on your terms."                 },
-    { icon: "🚀", title: "Start Learning", desc: "Meet your tutor and start building real confidence in the subject."                    },
+    { icon:"📝", title:"Sign Up",        desc:"Fill out our quick form with your subject and availability. Takes under 2 minutes." },
+    { icon:"🔍", title:"Get Matched",    desc:"We pair you with the perfect tutor for your subject and grade level."                },
+    { icon:"📅", title:"Schedule",       desc:"Pick a time that works for you — flexible, online, and on your terms."              },
+    { icon:"🚀", title:"Start Learning", desc:"Meet your tutor and start building real confidence in the subject."                 },
   ],
-
-  /* ── FORM DROPDOWNS ──────────────────────────────── */
-  formSubjects: [
-    "Mathematics", "Sciences", "English & Writing",
-    "Computer Science", "Spanish", "French", "Art", "SAT Prep"
+  faq: [
+    { q:"Is Atlas Edu really 100% free?",               a:"Yes, absolutely. Atlas Edu is entirely free for every student — no fees, no subscriptions, no hidden costs, ever. Our tutors are volunteers who genuinely want to help." },
+    { q:"How quickly will I be matched with a tutor?",  a:"We aim to match you within 48 hours of your request. Once matched, you'll receive an email with your tutor's contact info and can schedule your first session directly." },
+    { q:"What subjects do you cover?",                  a:"We cover 14+ subjects including Mathematics (all levels), Sciences, English & Writing, Computer Science, Spanish, French, SAT Prep, and more. Check the Subjects section for the full list." },
+    { q:"How long are tutoring sessions?",              a:"Sessions are typically 45–60 minutes, but this is flexible based on what you and your tutor agree on. You can schedule recurring sessions or one-off sessions as needed." },
+    { q:"Do I need to create an account?",              a:"No account needed! Just fill out the request form with your name, email, grade, and subject. That's it — no passwords, no profiles, no apps to download." },
+    { q:"Can I become a volunteer tutor?",              a:"Absolutely! If you're passionate about a subject and want to give back, scroll to the Volunteer section and apply. We welcome tutors from all backgrounds." },
   ],
-  formGrades: [
-    "Pre-K – 5th Grade",
-    "6th – 8th Grade",
-    "9th – 10th Grade",
-    "11th – 12th Grade",
-  ],
-
-  /* ── FOOTER LINKS ─────────────────────────────────── */
+  formGrades: ["Pre-K – 5th Grade","6th – 8th Grade","9th – 10th Grade","11th – 12th Grade"],
   footerLinks: {
-    "Students":     [
-      { label: "Request Tutoring", href: "#gethelp"  },
-      { label: "Subjects Offered", href: "#subjects" },
-      { label: "How It Works",     href: "#how"      },
-      { label: "Meet Tutors",      href: "#tutors"   },
-    ],
-    "Organization": [
-      { label: "About Us",       href: "#about"  },
-      { label: "Our Impact",     href: "#impact" },
-      { label: "Become a Tutor", href: "#volunteer" },
-      { label: "Contact",        href: "#"       },
-      { label: "Privacy Policy", href: "#"       },
-    ],
+    "Students":     [{ label:"Request Tutoring",href:"#gethelp"},{label:"Subjects Offered",href:"#subjects"},{label:"How It Works",href:"#how"},{label:"Meet Tutors",href:"#tutors"}],
+    "Organization": [{ label:"About Us",href:"#about"},{label:"Our Impact",href:"#impact"},{label:"Become a Tutor",href:"#volunteer"},{label:"FAQ",href:"#faq"},{label:"Privacy Policy",href:"#"}],
   },
-
 };
-/* ============================================================
-   END OF CONFIG — do not edit below unless you know JS!
-   ============================================================ */
+/* ============================================================ END CONFIG ============================================================ */
 </script>
 
 <style>
-:root {
-  --blue-deep: #1a3a5c;
-  --blue-mid: #2a6496;
-  --blue-light: #5ba4cf;
-  --teal: #2ec4b6;
-  --teal-light: #cbf3f0;
-  --yellow: #ffbf47;
-  --cream: #fafaf8;
-  --white: #ffffff;
-  --text-dark: #0f2133;
-  --text-mid: #3a5068;
-  --text-light: #7a94a8;
-  --card-bg: rgba(255,255,255,0.72);
-  --shadow-soft: 0 8px 40px rgba(26,58,92,0.10);
-  --shadow-hover: 0 16px 56px rgba(26,58,92,0.18);
+:root{
+  --blue-deep:#1a3a5c;--blue-mid:#2a6496;--blue-light:#5ba4cf;
+  --teal:#2ec4b6;--teal-light:#cbf3f0;--yellow:#ffbf47;
+  --cream:#fafaf8;--white:#ffffff;
+  --text-dark:#0f2133;--text-mid:#3a5068;--text-light:#7a94a8;
+  --card-bg:rgba(255,255,255,0.72);
+  --shadow-soft:0 8px 40px rgba(26,58,92,0.10);
+  --shadow-hover:0 16px 56px rgba(26,58,92,0.18);
+  --shadow-modal:0 32px 80px rgba(26,58,92,0.25);
+  --radius-lg:20px;--radius-pill:100px;
+  --overlay:rgba(10,24,40,0.65);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;font-size:16px;}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;cursor:none;}
 
 /* CURSOR */
-.cursor{width:12px;height:12px;background:var(--teal);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:multiply;}
-.cursor-ring{width:40px;height:40px;border:1.5px solid var(--teal);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s;opacity:.55;}
+.cursor{width:12px;height:12px;background:var(--teal);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .15s,height .15s,background .15s;mix-blend-mode:multiply;}
+.cursor-ring{width:40px;height:40px;border:1.5px solid var(--teal);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s;opacity:.55;}
+.cursor.clicking{transform:translate(-50%,-50%) scale(.75);}
 
-/* FREE BANNER */
+/* SCROLL PROGRESS */
+.scroll-progress{position:fixed;top:0;left:0;z-index:9999;height:3px;width:0%;background:linear-gradient(90deg,var(--teal),var(--yellow));transition:width .1s linear;}
+
+/* BANNER */
 .free-banner{background:linear-gradient(90deg,var(--teal),var(--blue-mid));color:#fff;text-align:center;padding:10px;font-size:.82rem;font-weight:500;letter-spacing:.3px;position:sticky;top:0;z-index:1001;}
 .free-banner a{color:#fff;text-decoration:underline;text-underline-offset:2px;}
 
 /* NAV */
-nav{position:sticky;top:38px;z-index:1000;padding:0 6vw;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,250,248,.9);backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid rgba(26,58,92,.07);transition:box-shadow .3s;}
+nav{position:sticky;top:38px;z-index:1000;padding:0 6vw;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,250,248,.92);backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid rgba(26,58,92,.07);transition:box-shadow .3s;}
 nav.scrolled{box-shadow:0 2px 32px rgba(26,58,92,.10);}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nav-logo-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--blue-deep),var(--teal));border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:14px;color:#fff;position:relative;overflow:hidden;}
@@ -221,9 +156,10 @@ nav.scrolled{box-shadow:0 2px 32px rgba(26,58,92,.10);}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--teal);transition:width .25s;}
 .nav-links a:hover{color:var(--blue-deep);}
 .nav-links a:hover::after{width:100%;}
+.nav-links a.active{color:var(--teal);}
 
 /* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;text-decoration:none;border:none;cursor:none;transition:all .25s;position:relative;overflow:hidden;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--radius-pill);font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;text-decoration:none;border:none;cursor:none;transition:all .25s;position:relative;overflow:hidden;}
 .btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,.2);border-radius:50%;transform:translate(-50%,-50%);transition:width .5s,height .5s;}
 .btn:hover::before{width:200%;height:400%;}
 .btn-primary{background:linear-gradient(135deg,var(--teal),var(--blue-mid));color:#fff;box-shadow:0 4px 24px rgba(46,196,182,.35);}
@@ -232,14 +168,14 @@ nav.scrolled{box-shadow:0 2px 32px rgba(26,58,92,.10);}
 .btn-outline:hover{background:var(--blue-deep);color:#fff;border-color:var(--blue-deep);transform:translateY(-2px);}
 
 /* FREE BADGE */
-.free-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(46,196,182,.12);border:1px solid rgba(46,196,182,.28);border-radius:100px;padding:6px 14px;font-size:.8rem;font-weight:600;color:var(--teal);}
+.free-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(46,196,182,.12);border:1px solid rgba(46,196,182,.28);border-radius:var(--radius-pill);padding:6px 14px;font-size:.8rem;font-weight:600;color:var(--teal);}
 .free-star{color:var(--yellow);}
 
 /* HERO */
 #hero{min-height:92vh;display:flex;align-items:center;padding:80px 6vw 60px;position:relative;overflow:hidden;background:linear-gradient(160deg,#eaf6fb 0%,var(--cream) 55%,#f0faf8 100%);}
 #hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
 .hero-content{position:relative;z-index:2;max-width:600px;}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(46,196,182,.12);border:1px solid rgba(46,196,182,.25);border-radius:100px;padding:6px 16px;font-size:.82rem;font-weight:500;color:var(--teal);margin-bottom:1.5rem;opacity:0;transform:translateY(20px);animation:fadeUp .7s .3s forwards;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(46,196,182,.12);border:1px solid rgba(46,196,182,.25);border-radius:var(--radius-pill);padding:6px 16px;font-size:.82rem;font-weight:500;color:var(--teal);margin-bottom:1.5rem;opacity:0;transform:translateY(20px);animation:fadeUp .7s .3s forwards;}
 .hero-eyebrow-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite;}
 .hero-headline{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.8rem,5.5vw,4.8rem);line-height:1.08;color:var(--blue-deep);letter-spacing:-1.5px;margin-bottom:1.3rem;opacity:0;transform:translateY(28px);animation:fadeUp .8s .5s forwards;}
 .hero-headline em{font-style:italic;color:var(--teal);position:relative;}
@@ -247,7 +183,6 @@ nav.scrolled{box-shadow:0 2px 32px rgba(26,58,92,.10);}
 .hero-sub{font-size:1.05rem;font-weight:300;line-height:1.75;color:var(--text-mid);margin-bottom:1.6rem;max-width:480px;opacity:0;transform:translateY(20px);animation:fadeUp .7s .65s forwards;}
 .hero-free-row{display:flex;align-items:center;gap:12px;margin-bottom:2rem;opacity:0;transform:translateY(16px);animation:fadeUp .7s .75s forwards;}
 .hero-free-row span{font-size:.88rem;color:var(--text-mid);}
-.hero-free-row strong{color:var(--teal);font-weight:600;}
 .hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;opacity:0;transform:translateY(20px);animation:fadeUp .7s .9s forwards;}
 .hero-stats{display:flex;align-items:center;gap:2rem;margin-top:3rem;opacity:0;transform:translateY(20px);animation:fadeUp .7s 1.1s forwards;flex-wrap:wrap;}
 .hero-stat-num{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:var(--blue-deep);line-height:1;}
@@ -267,12 +202,13 @@ section{padding:96px 6vw;}
 
 /* ABOUT */
 #about{background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;}
+.about-visual{position:relative;}
 .about-card{background:linear-gradient(135deg,var(--blue-deep),var(--blue-mid));border-radius:24px;padding:2.5rem;color:#fff;position:relative;overflow:hidden;}
 .about-card::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;background:rgba(46,196,182,.2);border-radius:50%;}
 .about-card h3{font-family:'Fraunces',serif;font-size:1.45rem;margin-bottom:.8rem;position:relative;z-index:1;}
 .about-card p{font-size:.93rem;line-height:1.75;opacity:.85;position:relative;z-index:1;}
-.about-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,191,71,.2);border:1px solid rgba(255,191,71,.4);border-radius:100px;padding:6px 14px;font-size:.82rem;font-weight:600;color:var(--yellow);margin-bottom:1rem;position:relative;z-index:1;}
-.about-float{position:absolute;background:var(--white);border-radius:14px;padding:1.1rem 1.4rem;box-shadow:var(--shadow-soft);font-size:.86rem;font-weight:500;color:var(--blue-deep);}
+.about-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,191,71,.2);border:1px solid rgba(255,191,71,.4);border-radius:var(--radius-pill);padding:6px 14px;font-size:.82rem;font-weight:600;color:var(--yellow);margin-bottom:1rem;position:relative;z-index:1;}
+.about-float{position:absolute;background:var(--white);border-radius:14px;padding:1.1rem 1.4rem;box-shadow:var(--shadow-soft);font-size:.86rem;font-weight:500;color:var(--blue-deep);z-index:10;}
 .about-float.f1{bottom:-18px;right:-18px;}
 .about-float.f2{top:-14px;left:-14px;}
 .about-float .bnum{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;color:var(--teal);line-height:1;display:block;}
@@ -283,7 +219,7 @@ section{padding:96px 6vw;}
 .value-label{font-size:.87rem;font-weight:500;color:var(--blue-deep);}
 .value-desc{font-size:.78rem;color:var(--text-light);margin-top:2px;line-height:1.5;}
 
-/* HOW IT WORKS */
+/* HOW */
 #how{background:linear-gradient(160deg,#eaf6fb 0%,var(--cream) 100%);}
 .how-hdr{text-align:center;max-width:560px;margin:0 auto 4rem;}
 .how-hdr .section-sub{margin-left:auto;margin-right:auto;}
@@ -300,7 +236,7 @@ section{padding:96px 6vw;}
 .subjects-hdr{text-align:center;max-width:560px;margin:0 auto 3.5rem;}
 .subjects-hdr .section-sub{margin:0 auto;}
 .subjects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.2rem;max-width:1100px;margin:0 auto;}
-.subject-card{background:var(--card-bg);border:1px solid rgba(255,255,255,.5);border-radius:20px;padding:1.8rem 1.4rem;text-align:center;cursor:none;transition:all .3s;position:relative;overflow:hidden;backdrop-filter:blur(8px);}
+.subject-card{background:var(--card-bg);border:1px solid rgba(255,255,255,.5);border-radius:var(--radius-lg);padding:1.8rem 1.4rem;text-align:center;cursor:none;transition:all .3s;position:relative;overflow:hidden;backdrop-filter:blur(8px);}
 .subject-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:var(--shadow-hover);border-color:rgba(46,196,182,.4);}
 .subject-icon-wrap{width:58px;height:58px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.65rem;margin:0 auto 1rem;transition:transform .3s;}
 .subject-card:hover .subject-icon-wrap{transform:scale(1.15) rotate(5deg);}
@@ -311,15 +247,35 @@ section{padding:96px 6vw;}
 #tutors{background:linear-gradient(160deg,var(--cream) 0%,#eaf6fb 100%);}
 .tutors-hdr{text-align:center;max-width:560px;margin:0 auto 3.5rem;}
 .tutors-hdr .section-sub{margin:0 auto;}
-.tutors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem;max-width:1100px;margin:0 auto;}
-.tutor-card{background:var(--white);border-radius:20px;padding:2rem 1.5rem;text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(26,58,92,.06);transition:all .3s;cursor:none;}
+.tutors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem;max-width:1100px;margin:0 auto;}
+.tutor-card{background:var(--white);border-radius:var(--radius-lg);padding:2rem 1.5rem;text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(26,58,92,.06);transition:transform .3s,box-shadow .3s;cursor:none;position:relative;overflow:hidden;}
+.tutor-card::after{content:'View Profile →';position:absolute;bottom:0;left:0;right:0;background:linear-gradient(135deg,var(--teal),var(--blue-mid));color:#fff;font-size:.78rem;font-weight:600;padding:.7rem;letter-spacing:.5px;transform:translateY(100%);transition:transform .3s;}
 .tutor-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);}
+.tutor-card:hover::after{transform:translateY(0);}
 .tutor-avatar{width:72px;height:72px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;}
 .tutor-avatar::before{content:'';position:absolute;inset:-3px;background:linear-gradient(135deg,var(--teal),var(--blue-light));border-radius:50%;z-index:-1;}
 .tutor-name{font-weight:600;font-size:1rem;color:var(--blue-deep);margin-bottom:.2rem;}
 .tutor-role{font-size:.78rem;color:var(--teal);font-weight:500;margin-bottom:.5rem;}
-.tutor-tag{display:inline-block;background:var(--teal-light);color:var(--teal);border-radius:100px;padding:2px 10px;font-size:.71rem;font-weight:500;margin:2px;}
+.tutor-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;}
+.tutor-tag{display:inline-block;background:var(--teal-light);color:var(--teal);border-radius:var(--radius-pill);padding:2px 10px;font-size:.71rem;font-weight:500;}
 .tutor-bio{font-size:.79rem;color:var(--text-light);margin-top:.8rem;line-height:1.55;}
+.tutor-rating{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:.6rem;font-size:.78rem;color:var(--text-mid);}
+.tutor-rating .stars{color:var(--yellow);letter-spacing:1px;}
+
+/* TESTIMONIALS */
+/* FAQ */
+#faq{background:linear-gradient(160deg,#eaf6fb 0%,var(--cream) 100%);}
+.faq-hdr{text-align:center;max-width:560px;margin:0 auto 3.5rem;}
+.faq-hdr .section-sub{margin:0 auto;}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem;}
+.faq-item{background:var(--white);border-radius:16px;border:1px solid rgba(26,58,92,.07);overflow:hidden;transition:box-shadow .3s,border-color .3s;}
+.faq-item.open{border-color:rgba(46,196,182,.3);box-shadow:var(--shadow-soft);}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.3rem 1.6rem;background:none;border:none;cursor:none;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:500;color:var(--blue-deep);text-align:left;gap:1rem;}
+.faq-q:hover{color:var(--teal);}
+.faq-icon{width:28px;height:28px;border-radius:50%;flex-shrink:0;background:rgba(46,196,182,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:transform .3s,background .3s;color:var(--teal);}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--teal);color:#fff;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .4s;padding:0 1.6rem;font-size:.88rem;line-height:1.7;color:var(--text-mid);}
+.faq-item.open .faq-a{max-height:200px;padding:.2rem 1.6rem 1.4rem;}
 
 /* IMPACT */
 #impact{background:linear-gradient(135deg,var(--blue-deep),#1a4a6c 50%,#0f3352);position:relative;overflow:hidden;text-align:center;}
@@ -329,40 +285,37 @@ section{padding:96px 6vw;}
 #impact .section-sub{color:rgba(255,255,255,.65);margin:0 auto 3.5rem;}
 #impact .section-eyebrow{color:var(--teal);}
 .impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;max-width:900px;margin:0 auto 2.5rem;position:relative;z-index:1;}
-.impact-item{padding:1.8rem 1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;backdrop-filter:blur(10px);transition:all .3s;}
+.impact-item{padding:1.8rem 1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);backdrop-filter:blur(10px);transition:all .3s;}
 .impact-item:hover{background:rgba(255,255,255,.1);transform:translateY(-4px);}
 .impact-num{font-family:'Fraunces',serif;font-size:clamp(2rem,3.5vw,2.9rem);font-weight:600;color:var(--yellow);line-height:1;display:block;margin-bottom:.4rem;}
 .impact-label{font-size:.83rem;color:rgba(255,255,255,.7);line-height:1.5;}
-.glow-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,191,71,.15);border:1px solid rgba(255,191,71,.4);border-radius:100px;padding:7px 18px;font-size:.8rem;font-weight:500;color:var(--yellow);position:relative;z-index:1;}
+.glow-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,191,71,.15);border:1px solid rgba(255,191,71,.4);border-radius:var(--radius-pill);padding:7px 18px;font-size:.8rem;font-weight:500;color:var(--yellow);position:relative;z-index:1;}
 
-/* GET HELP */
+/* FORMS */
 #gethelp{background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;}
+#volunteer{background:linear-gradient(160deg,#eaf6fb 0%,var(--cream) 100%);display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;}
 .form-card{background:var(--cream);border-radius:24px;padding:2.5rem;border:1px solid rgba(26,58,92,.07);box-shadow:var(--shadow-soft);}
 .form-card h3{font-family:'Fraunces',serif;font-size:1.35rem;color:var(--blue-deep);margin-bottom:1.5rem;}
 .form-group{margin-bottom:.95rem;}
 .form-group label{display:block;font-size:.8rem;font-weight:500;color:var(--text-mid);margin-bottom:.4rem;}
-.form-group input,.form-group select{width:100%;padding:11px 15px;border:1.5px solid rgba(26,58,92,.12);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--text-dark);background:var(--white);outline:none;transition:border-color .2s,box-shadow .2s;cursor:none;}
+.form-group input,.form-group select{width:100%;padding:11px 15px;border:1.5px solid rgba(26,58,92,.12);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--text-dark);background:var(--white);outline:none;cursor:none;transition:border-color .2s,box-shadow .2s;}
 .form-group input:focus,.form-group select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(46,196,182,.12);}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
 .checklist{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin-top:1.4rem;}
 .checklist li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text-mid);}
 .checklist li::before{content:'✓';color:var(--teal);font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px;}
-
-/* FORM ERROR */
 .form-error{display:none;background:rgba(220,50,50,.08);border:1px solid rgba(220,50,50,.2);border-radius:10px;padding:10px 14px;font-size:.82rem;color:#c0392b;margin-top:.5rem;}
-
-/* FORM SUCCESS */
-#form-success{display:none;text-align:center;padding:2rem 1rem;}
-#form-success .success-icon{font-size:2.8rem;margin-bottom:1rem;}
-#form-success h4{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--blue-deep);margin-bottom:.6rem;}
-#form-success p{font-size:.9rem;color:var(--text-mid);line-height:1.6;}
-#form-success .free-badge{margin:1.2rem auto 0;display:inline-flex;}
+.form-success-state{display:none;text-align:center;padding:2rem 1rem;}
+.form-success-state .success-icon{font-size:2.8rem;margin-bottom:1rem;}
+.form-success-state h4{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--blue-deep);margin-bottom:.6rem;}
+.form-success-state p{font-size:.9rem;color:var(--text-mid);line-height:1.6;}
+.form-success-state .free-badge{margin:1.2rem auto 0;display:inline-flex;}
 
 /* FOOTER */
 footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 32px;}
 .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:2rem;}
 .footer-brand p{font-size:.84rem;line-height:1.7;margin-top:.8rem;max-width:250px;}
-.footer-free{display:inline-flex;align-items:center;gap:6px;background:rgba(46,196,182,.15);border:1px solid rgba(46,196,182,.3);border-radius:100px;padding:5px 13px;font-size:.74rem;font-weight:600;color:var(--teal);margin-top:.8rem;}
+.footer-free{display:inline-flex;align-items:center;gap:6px;background:rgba(46,196,182,.15);border:1px solid rgba(46,196,182,.3);border-radius:var(--radius-pill);padding:5px 13px;font-size:.74rem;font-weight:600;color:var(--teal);margin-top:.8rem;}
 .footer-nav-title{font-size:.8rem;font-weight:500;color:#fff;margin-bottom:1rem;letter-spacing:.5px;}
 .footer-nav-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
 .footer-nav-list a{font-size:.8rem;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;}
@@ -371,42 +324,169 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
 
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease;}
-.reveal.visible{opacity:1;transform:none;}
 .reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .75s ease,transform .75s ease;}
-.reveal-left.visible{opacity:1;transform:none;}
 .reveal-right{opacity:0;transform:translateX(32px);transition:opacity .75s ease,transform .75s ease;}
-.reveal-right.visible{opacity:1;transform:none;}
+.reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none;}
 .s1{transition-delay:.00s}.s2{transition-delay:.08s}.s3{transition-delay:.16s}
 .s4{transition-delay:.24s}.s5{transition-delay:.32s}.s6{transition-delay:.40s}
 .s7{transition-delay:.48s}.s8{transition-delay:.56s}
 
-/* ANIMATIONS */
+/* KEYFRAMES */
 @keyframes fadeUp{to{opacity:1;transform:none;}}
 @keyframes fadeInRight{to{opacity:1;transform:translateY(-50%);}}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
 @keyframes floatAnim{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-18px) rotate(6deg)}}
+@keyframes modalIn{from{opacity:0;transform:translate(-50%,-48%) scale(.96)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes notifIn{from{transform:translateX(120%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes notifOut{from{transform:translateX(0);opacity:1}to{transform:translateX(120%);opacity:0}}
+@keyframes progressBar{from{width:100%}to{width:0%}}
+@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
 
-/* TOAST */
-.toast{position:fixed;bottom:24px;right:24px;background:var(--blue-deep);color:#fff;padding:14px 22px;border-radius:14px;font-size:.86rem;box-shadow:0 8px 32px rgba(26,58,92,.3);transform:translateY(80px);opacity:0;transition:all .4s cubic-bezier(.34,1.56,.64,1);z-index:9000;max-width:320px;display:flex;align-items:center;gap:10px;}
-.toast.show{transform:none;opacity:1;}
+/* OVERLAY / MODAL SYSTEM */
+.overlay-backdrop{position:fixed;inset:0;background:var(--overlay);z-index:5000;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
+.overlay-backdrop.active{opacity:1;pointer-events:all;}
+.modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.96);z-index:5100;background:var(--white);border-radius:28px;box-shadow:var(--shadow-modal);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;max-height:90vh;overflow-y:auto;width:min(600px,92vw);}
+.modal.active{opacity:1;pointer-events:all;transform:translate(-50%,-50%) scale(1);animation:modalIn .35s cubic-bezier(.34,1.4,.64,1);}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;width:36px;height:36px;border-radius:50%;background:var(--cream);border:none;cursor:none;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--text-mid);transition:all .2s;z-index:1;}
+.modal-close:hover{background:rgba(220,50,50,.1);color:#c0392b;transform:rotate(90deg);}
 
-/* MOBILE */
+/* TUTOR MODAL */
+.tutor-modal-hero{background:linear-gradient(135deg,var(--blue-deep),var(--blue-mid));padding:2.5rem 2rem 1.5rem;text-align:center;position:relative;border-radius:28px 28px 0 0;}
+.tutor-modal-avatar{width:88px;height:88px;border-radius:50%;margin:0 auto .8rem;display:flex;align-items:center;justify-content:center;font-size:2.4rem;background:rgba(255,255,255,.15);border:3px solid rgba(255,255,255,.3);}
+.tutor-modal-name{font-family:'Fraunces',serif;font-size:1.6rem;color:#fff;font-weight:600;margin-bottom:.3rem;}
+.tutor-modal-role{font-size:.85rem;color:rgba(255,255,255,.75);margin-bottom:.8rem;}
+.tutor-modal-stats{display:flex;justify-content:center;gap:1.8rem;}
+.tms{text-align:center;}
+.tms-num{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--yellow);}
+.tms-label{font-size:.72rem;color:rgba(255,255,255,.6);margin-top:2px;}
+.tutor-modal-body{padding:2rem;}
+.tutor-modal-body h4{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--blue-deep);margin-bottom:.6rem;}
+.tutor-modal-body p{font-size:.9rem;line-height:1.7;color:var(--text-mid);margin-bottom:1.4rem;}
+.tutor-modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.4rem;}
+.tutor-modal-avail{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--teal);font-weight:500;background:rgba(46,196,182,.08);padding:.6rem 1rem;border-radius:10px;margin-bottom:1.6rem;}
+
+/* NOTIFICATIONS */
+.notif-stack{position:fixed;bottom:24px;right:24px;z-index:6000;display:flex;flex-direction:column-reverse;gap:10px;pointer-events:none;}
+.notif{display:flex;align-items:flex-start;gap:12px;background:var(--white);border-radius:16px;padding:1rem 1.2rem;box-shadow:0 8px 40px rgba(26,58,92,.18);min-width:280px;max-width:340px;pointer-events:all;border-left:3px solid var(--teal);animation:notifIn .4s cubic-bezier(.34,1.56,.64,1) forwards;position:relative;overflow:hidden;}
+.notif.success{border-color:var(--teal);}
+.notif.error{border-color:#e74c3c;}
+.notif.info{border-color:var(--blue-mid);}
+.notif.warning{border-color:var(--yellow);}
+.notif-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px;}
+.notif-content{flex:1;}
+.notif-title{font-size:.88rem;font-weight:600;color:var(--blue-deep);margin-bottom:2px;}
+.notif-msg{font-size:.8rem;color:var(--text-mid);line-height:1.5;}
+.notif-close{background:none;border:none;cursor:none;font-size:.95rem;color:var(--text-light);padding:0;line-height:1;transition:color .2s;}
+.notif-close:hover{color:var(--text-dark);}
+.notif-bar{position:absolute;bottom:0;left:0;height:2px;background:var(--teal);border-radius:0 0 0 16px;animation:progressBar linear forwards;}
+.notif.error .notif-bar{background:#e74c3c;}
+.notif.info .notif-bar{background:var(--blue-mid);}
+.notif.warning .notif-bar{background:var(--yellow);}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:24px;right:24px;z-index:4000;width:44px;height:44px;border-radius:50%;background:var(--blue-deep);color:#fff;border:none;cursor:none;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 4px 20px rgba(26,58,92,.3);opacity:0;pointer-events:none;transform:translateY(20px);transition:all .3s;}
+.back-top.show{opacity:1;pointer-events:all;transform:translateY(0);}
+.back-top:hover{background:var(--teal);transform:translateY(-3px) !important;}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--blue-deep);border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* SIDE DRAWER */
+.side-drawer{position:fixed;top:0;right:0;bottom:0;width:280px;background:var(--white);z-index:5200;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 48px rgba(26,58,92,.18);padding:2rem 1.5rem;overflow-y:auto;}
+.side-drawer.open{transform:translateX(0);}
+.side-drawer-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:none;color:var(--text-mid);}
+.drawer-link{display:block;font-size:1.1rem;font-weight:500;color:var(--blue-deep);text-decoration:none;padding:.7rem 0;border-bottom:1px solid rgba(26,58,92,.07);transition:color .2s;}
+.drawer-link:hover{color:var(--teal);}
+
+/* CONFETTI */
+.confetti-piece{position:fixed;top:-20px;z-index:9998;pointer-events:none;animation:confettiFall linear forwards;}
+
+/* RESPONSIVE */
 @media(max-width:768px){
   .hero-visual{display:none;}
-  #about,#gethelp{grid-template-columns:1fr;}
+  #about,#gethelp,#volunteer{grid-template-columns:1fr;}
   .steps-track{grid-template-columns:1fr 1fr;}
   .steps-track::before{display:none;}
-  .footer-top{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr;}
   .nav-links{display:none;}
+  .hamburger{display:flex;}
   .form-row{grid-template-columns:1fr;}
   .about-float{display:none;}
+  .notif-stack{left:12px;right:12px;bottom:12px;}
+  .notif{max-width:100%;min-width:0;}
+  .back-top{bottom:80px;}
 }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Confetti container -->
+<div id="confettiContainer"></div>
+
+<!-- Custom cursor -->
+<div class="cursor"      id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Notification stack -->
+<div class="notif-stack" id="notifStack"></div>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Overlay backdrop (shared by modals + drawer) -->
+<div class="overlay-backdrop" id="overlayBackdrop" onclick="closeAllModals()"></div>
+
+<!-- ═══════════════════════════════════════════════
+     TUTOR PROFILE MODAL
+     ═══════════════════════════════════════════════ -->
+<div class="modal" id="tutorModal" role="dialog" aria-modal="true" aria-label="Tutor profile">
+  <button class="modal-close" onclick="closeModal('tutorModal')">✕</button>
+  <div class="tutor-modal-hero">
+    <div class="tutor-modal-avatar" id="tmAvatar"></div>
+    <div class="tutor-modal-name"   id="tmName"></div>
+    <div class="tutor-modal-role"   id="tmRole"></div>
+    <div class="tutor-modal-stats">
+      <div class="tms"><div class="tms-num" id="tmSessions"></div><div class="tms-label">Sessions</div></div>
+      <div class="tms"><div class="tms-num" id="tmRating"></div><div class="tms-label">Rating</div></div>
+      <div class="tms"><div class="tms-num" id="tmSubjectCount"></div><div class="tms-label">Subjects</div></div>
+    </div>
+  </div>
+  <div class="tutor-modal-body">
+    <div class="tutor-modal-avail">📅 <span id="tmAvail"></span></div>
+    <h4>About</h4>
+    <p id="tmBio"></p>
+    <h4>Subjects Taught</h4>
+    <div class="tutor-modal-tags" id="tmTags"></div>
+    <a href="#gethelp" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:.95rem;" onclick="closeModal('tutorModal')">
+      Request This Tutor →
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SIDE DRAWER (mobile nav)
+     ═══════════════════════════════════════════════ -->
+<div class="side-drawer" id="sideDrawer">
+  <button class="side-drawer-close" onclick="toggleDrawer()">✕</button>
+  <div style="margin-top:3rem;display:flex;flex-direction:column;gap:1rem;">
+    <a class="drawer-link" href="#about"        onclick="toggleDrawer()">About</a>
+    <a class="drawer-link" href="#how"          onclick="toggleDrawer()">How It Works</a>
+    <a class="drawer-link" href="#subjects"     onclick="toggleDrawer()">Subjects</a>
+    <a class="drawer-link" href="#tutors"       onclick="toggleDrawer()">Tutors</a>
+    <a class="drawer-link" href="#faq"          onclick="toggleDrawer()">FAQ</a>
+    <a class="drawer-link" href="#volunteer"    onclick="toggleDrawer()">Volunteer</a>
+    <a class="btn btn-primary" href="#gethelp" style="margin-top:.5rem;justify-content:center" onclick="toggleDrawer()">Get Free Help →</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
 
 <!-- FREE BANNER -->
 <div class="free-banner">
@@ -419,15 +499,20 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
     <div class="nav-logo-mark">AE</div>
     <span class="nav-logo-text">Atlas <span>Edu</span></span>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#how">How It Works</a></li>
     <li><a href="#subjects">Subjects</a></li>
     <li><a href="#tutors">Tutors</a></li>
-    <li><a href="#impact">Impact</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#volunteer">Volunteer</a></li>
   </ul>
-  <a href="#gethelp" class="btn btn-primary">Get Free Help →</a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <a href="#gethelp" class="btn btn-primary">Get Free Help →</a>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -438,12 +523,8 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
   <span class="float-icon" style="top:25%;right:38%;--dur:5.5s;--delay:.5s">🌍</span>
   <span class="float-icon" style="bottom:20%;right:42%;--dur:8s;--delay:2s">🔬</span>
   <span class="float-icon" style="top:58%;right:36%;--dur:6.5s;--delay:1.5s">💡</span>
-
   <div class="hero-content">
-    <div class="hero-eyebrow">
-      <span class="hero-eyebrow-dot"></span>
-      100% Free · For Every Student
-    </div>
+    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>100% Free · For Every Student</div>
     <h1 class="hero-headline">Guiding Students<br>to <em>Knowledge</em></h1>
     <p class="hero-sub" id="hero-sub-text"></p>
     <div class="hero-free-row">
@@ -451,12 +532,11 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
       <span>No fees. No subscriptions. No catch.</span>
     </div>
     <div class="hero-ctas">
-      <a href="#gethelp" class="btn btn-primary" style="font-size:1rem;padding:14px 28px">Get Free Tutoring →</a>
-      <a href="#subjects" class="btn btn-outline" style="font-size:1rem;padding:14px 28px">See All Subjects</a>
+      <a href="#gethelp"  class="btn btn-primary" style="font-size:1rem;padding:14px 28px">Get Free Tutoring →</a>
+      <a href="#subjects" class="btn btn-outline"  style="font-size:1rem;padding:14px 28px">See All Subjects</a>
     </div>
     <div class="hero-stats" id="hero-stats-row"></div>
   </div>
-
   <div class="hero-visual">
     <div class="book-wrap">
       <svg viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -476,7 +556,7 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
         <text x="118" y="130" font-family="Fraunces,serif" font-size="28" font-weight="600" fill="rgba(255,255,255,0.9)" text-anchor="middle">A</text>
         <text x="222" y="130" font-family="Fraunces,serif" font-size="28" font-weight="600" fill="rgba(255,255,255,0.9)" text-anchor="middle">E</text>
         <circle cx="170" cy="72" r="8" fill="#ffbf47"/>
-        <circle cx="56" cy="155" r="5" fill="#2ec4b6" opacity=".7"/>
+        <circle cx="56"  cy="155" r="5" fill="#2ec4b6" opacity=".7"/>
         <circle cx="284" cy="200" r="4" fill="#ffbf47" opacity=".7"/>
         <circle cx="100" cy="280" r="3" fill="#5ba4cf" opacity=".5"/>
         <circle cx="250" cy="270" r="6" fill="#2ec4b6" opacity=".4"/>
@@ -502,7 +582,7 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
       <p>We connect dedicated volunteer tutors with students who need that extra push — building confidence and skills one session at a time, at absolutely no cost.</p>
     </div>
     <div class="about-float f1"><span class="bnum">100%</span>Always Free</div>
-    <div class="about-float f2"><span class="bnum">🎓</span>Est. 2020</div>
+    <div class="about-float f2" id="about-float-founded"></div>
   </div>
   <div class="reveal-right">
     <div class="section-eyebrow">About Us</div>
@@ -543,9 +623,19 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
   <div class="tutors-hdr reveal">
     <div class="section-eyebrow">Our Tutors</div>
     <h2 class="section-title">Meet the Team</h2>
-    <p class="section-sub">Dedicated volunteers who love what they teach and are here to help you succeed — completely free of charge.</p>
+    <p class="section-sub">Click any tutor card to see their full profile, subjects, and availability.</p>
   </div>
   <div class="tutors-grid" id="tutors-grid"></div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-hdr reveal">
+    <div class="section-eyebrow">Questions</div>
+    <h2 class="section-title">Frequently Asked</h2>
+    <p class="section-sub">Everything you need to know. Still have questions? Reach out anytime.</p>
+  </div>
+  <div class="faq-list" id="faqList"></div>
 </section>
 
 <!-- IMPACT -->
@@ -568,9 +658,7 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
     <div class="accent-line"></div>
     <h2 class="section-title">Need Help?<br>We've Got You.</h2>
     <p class="section-sub">No matter what you're struggling with, our tutors are ready — and it's completely free, always.</p>
-    <div class="free-badge" style="font-size:.9rem;padding:8px 18px;margin-bottom:1.5rem">
-      <span class="free-star">★</span> 100% Free for All Students, Always
-    </div>
+    <div class="free-badge" style="font-size:.9rem;padding:8px 18px;margin-bottom:1.5rem"><span class="free-star">★</span> 100% Free for All Students, Always</div>
     <ul class="checklist">
       <li>Free for every student, always — no exceptions</li>
       <li>Matched with a tutor within 48 hours</li>
@@ -582,67 +670,33 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
   <div class="reveal-right">
     <div class="form-card">
       <h3>Request a Tutor</h3>
-
-      <!-- ── FORM FIELDS (hidden after successful submit) ── -->
       <div id="form-wrap">
         <div class="form-row">
-          <div class="form-group">
-            <label for="f-first">First Name</label>
-            <input id="f-first" name="First Name" type="text" placeholder="Alex" required>
-          </div>
-          <div class="form-group">
-            <label for="f-last">Last Name</label>
-            <input id="f-last" name="Last Name" type="text" placeholder="Johnson" required>
-          </div>
+          <div class="form-group"><label for="f-first">First Name</label><input id="f-first" type="text" placeholder="Alex" required></div>
+          <div class="form-group"><label for="f-last">Last Name</label><input id="f-last" type="text" placeholder="Johnson" required></div>
         </div>
-        <div class="form-group">
-          <label for="f-email">Email Address</label>
-          <input id="f-email" name="Email" type="email" placeholder="alex@email.com" required>
-        </div>
-        <div class="form-group">
-          <label for="grade-select">Grade Level</label>
-          <select id="grade-select" name="Grade Level" required>
-            <option value="">Select grade level...</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="subject-select">Subject Needed</label>
-          <select id="subject-select" name="Subject" required>
-            <option value="">Select a subject...</option>
-          </select>
-        </div>
-
-        <!-- Inline validation error -->
+        <div class="form-group"><label for="f-email">Email Address</label><input id="f-email" type="email" placeholder="alex@email.com" required></div>
+        <div class="form-group"><label for="grade-select">Grade Level</label><select id="grade-select" required><option value="">Select grade level…</option></select></div>
+        <div class="form-group"><label for="subject-select">Subject Needed</label><select id="subject-select" required><option value="">Select a subject…</option></select></div>
         <div class="form-error" id="form-error"></div>
-
-        <button
-          id="submit-btn"
-          class="btn btn-primary"
-          style="width:100%;justify-content:center;padding:14px;font-size:.95rem;margin-top:.8rem"
-          onclick="handleFormSubmit(event)"
-        >
+        <button id="submit-btn" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:.95rem;margin-top:.8rem" onclick="handleFormSubmit(event)">
           <span id="btn-label">Submit Request →</span>
           <span id="btn-spinner" style="display:none">Sending…</span>
         </button>
-        <p style="text-align:center;font-size:.74rem;color:var(--text-light);margin-top:.8rem">
-          ★ No payment info needed — it's always free.
-        </p>
+        <p style="text-align:center;font-size:.74rem;color:var(--text-light);margin-top:.8rem">★ No payment info needed — it's always free.</p>
       </div>
-
-      <!-- ── SUCCESS STATE (shown after submit) ── -->
-      <div id="form-success">
+      <div class="form-success-state" id="form-success">
         <div class="success-icon">🎉</div>
         <h4>Request Received!</h4>
         <p>We'll match you with the perfect tutor within <strong>48 hours</strong>. Check your inbox for a confirmation email.</p>
         <div class="free-badge"><span class="free-star">★</span> Always 100% Free</div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- VOLUNTEER / BECOME A TUTOR -->
-<section id="volunteer" style="background:linear-gradient(160deg,#eaf6fb 0%,var(--cream) 100%);display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;">
+<!-- VOLUNTEER -->
+<section id="volunteer">
   <div class="reveal-left">
     <div class="section-eyebrow">Join the Team</div>
     <div class="accent-line"></div>
@@ -660,45 +714,23 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
       <h3>Apply to Tutor</h3>
       <div id="vol-form-wrap">
         <div class="form-row">
-          <div class="form-group">
-            <label for="v-first">First Name</label>
-            <input id="v-first" name="First Name" type="text" placeholder="Jordan" required>
-          </div>
-          <div class="form-group">
-            <label for="v-last">Last Name</label>
-            <input id="v-last" name="Last Name" type="text" placeholder="Lee" required>
-          </div>
+          <div class="form-group"><label for="v-first">First Name</label><input id="v-first" type="text" placeholder="Jordan" required></div>
+          <div class="form-group"><label for="v-last">Last Name</label><input id="v-last" type="text" placeholder="Lee" required></div>
         </div>
-        <div class="form-group">
-          <label for="v-email">Email Address</label>
-          <input id="v-email" name="Email" type="email" placeholder="jordan@email.com" required>
-        </div>
-        <div class="form-group">
-          <label for="v-school">Current School / Grade</label>
-          <input id="v-school" name="School" type="text" placeholder="e.g. Westview High School, 11th Grade">
-        </div>
-        <div class="form-group">
-          <label for="v-subject">Subject(s) You Can Teach</label>
-          <input id="v-subject" name="Subjects" type="text" placeholder="e.g. Algebra 2, Chemistry">
-        </div>
+        <div class="form-group"><label for="v-email">Email Address</label><input id="v-email" type="email" placeholder="jordan@email.com" required></div>
+        <div class="form-group"><label for="v-school">Current School / Grade</label><input id="v-school" type="text" placeholder="e.g. Westview High School, 11th Grade"></div>
+        <div class="form-group"><label for="v-subject">Subject(s) You Can Teach</label><input id="v-subject" type="text" placeholder="e.g. Algebra 2, Chemistry"></div>
         <div class="form-error" id="vol-form-error"></div>
-        <button
-          id="vol-submit-btn"
-          class="btn btn-primary"
-          style="width:100%;justify-content:center;padding:14px;font-size:.95rem;margin-top:.8rem;background:linear-gradient(135deg,var(--yellow),#f0a500);box-shadow:0 4px 24px rgba(255,191,71,.4);color:var(--blue-deep);font-weight:600;"
-          onclick="handleVolunteerSubmit(event)"
-        >
+        <button id="vol-submit-btn" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:.95rem;margin-top:.8rem;background:linear-gradient(135deg,var(--yellow),#f0a500);box-shadow:0 4px 24px rgba(255,191,71,.4);color:var(--blue-deep);font-weight:600;" onclick="handleVolunteerSubmit(event)">
           <span id="vol-btn-label">Apply Now →</span>
           <span id="vol-btn-spinner" style="display:none">Sending…</span>
         </button>
-        <p style="text-align:center;font-size:.74rem;color:var(--text-light);margin-top:.8rem">
-          We'll reach out within 3 business days.
-        </p>
+        <p style="text-align:center;font-size:.74rem;color:var(--text-light);margin-top:.8rem">We'll reach out within 3 business days.</p>
       </div>
-      <div id="vol-form-success" style="display:none;text-align:center;padding:2rem 1rem;">
-        <div style="font-size:2.8rem;margin-bottom:1rem">🌟</div>
-        <div style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--blue-deep);margin-bottom:.6rem">Application Received!</div>
-        <p style="font-size:.9rem;color:var(--text-mid);line-height:1.6">Thanks for wanting to give back! We'll review your application and be in touch within <strong>3 business days</strong>.</p>
+      <div class="form-success-state" id="vol-form-success">
+        <div class="success-icon">🌟</div>
+        <h4>Application Received!</h4>
+        <p>Thanks for wanting to give back! We'll review your application and be in touch within <strong>3 business days</strong>.</p>
       </div>
     </div>
   </div>
@@ -708,308 +740,367 @@ footer{background:var(--blue-deep);color:rgba(255,255,255,.7);padding:60px 6vw 3
 <footer>
   <div class="footer-top" id="footer-top"></div>
   <div class="footer-btm">
-    <span>© 2025 Atlas Edu · All Rights Reserved</span>
+    <span id="footer-copy"></span>
     <span>Free tutoring for every student ❤️</span>
   </div>
 </footer>
 
-<div class="toast" id="toast"><span id="toast-icon"></span><span id="toast-msg"></span></div>
-
 <script>
-/* ── RENDER FROM CONFIG ─────────────────────────────────────── */
-
+/* =============================================================
+   RENDER FROM CONFIG
+   ============================================================= */
 document.getElementById('hero-sub-text').textContent = SITE_CONFIG.subheadline;
+document.getElementById('about-float-founded').innerHTML = `<span class="bnum">🎓</span>Est. ${SITE_CONFIG.foundedYear}`;
+document.getElementById('footer-copy').textContent = `© ${SITE_CONFIG.foundedYear} ${SITE_CONFIG.orgName} · All Rights Reserved`;
 
+// Hero stats
 const hsRow = document.getElementById('hero-stats-row');
-SITE_CONFIG.heroStats.forEach((s, i) => {
-  if (i > 0) hsRow.innerHTML += `<div class="hero-stat-div"></div>`;
-  hsRow.innerHTML += `<div class="hero-stat-item"><div class="hero-stat-num">${s.num}</div><div class="hero-stat-label">${s.label}</div></div>`;
+SITE_CONFIG.heroStats.forEach((s,i)=>{
+  if(i>0) hsRow.insertAdjacentHTML('beforeend',`<div class="hero-stat-div"></div>`);
+  hsRow.insertAdjacentHTML('beforeend',`<div><div class="hero-stat-num">${s.num}</div><div class="hero-stat-label">${s.label}</div></div>`);
 });
 
+// Steps
 const stepsEl = document.getElementById('steps-track');
-SITE_CONFIG.steps.forEach((s, i) => {
-  stepsEl.innerHTML += `<div class="step-item reveal s${i+1}"><div class="step-num">${s.icon}</div><div class="step-title">${s.title}</div><div class="step-desc">${s.desc}</div></div>`;
+SITE_CONFIG.steps.forEach((s,i)=>{
+  stepsEl.insertAdjacentHTML('beforeend',`<div class="step-item reveal s${i+1}"><div class="step-num">${s.icon}</div><div class="step-title">${s.title}</div><div class="step-desc">${s.desc}</div></div>`);
 });
 
-const subGrid = document.getElementById('subjects-grid');
-const subSel  = document.getElementById('subject-select');
-SITE_CONFIG.subjects.forEach((s, i) => {
-  subGrid.innerHTML += `<div class="subject-card reveal s${(i%8)+1}"><div class="subject-icon-wrap" style="background:${s.color}">${s.icon}</div><div class="subject-name">${s.name}</div><div class="subject-levels">${s.levels}</div></div>`;
-  subSel.innerHTML  += `<option>${s.name}</option>`;
+// Subjects
+const subGrid=document.getElementById('subjects-grid'), subSel=document.getElementById('subject-select');
+SITE_CONFIG.subjects.forEach((s,i)=>{
+  subGrid.insertAdjacentHTML('beforeend',`<div class="subject-card reveal s${(i%8)+1}"><div class="subject-icon-wrap" style="background:${s.color}">${s.icon}</div><div class="subject-name">${s.name}</div><div class="subject-levels">${s.levels}</div></div>`);
+  subSel.insertAdjacentHTML('beforeend',`<option value="${s.name}">${s.name}</option>`);
 });
 
-const gradeSel = document.getElementById('grade-select');
-SITE_CONFIG.formGrades.forEach(g => { gradeSel.innerHTML += `<option>${g}</option>`; });
+// Grade dropdown
+const gradeSel=document.getElementById('grade-select');
+SITE_CONFIG.formGrades.forEach(g=>gradeSel.insertAdjacentHTML('beforeend',`<option value="${g}">${g}</option>`));
 
-const tutorGrid = document.getElementById('tutors-grid');
-SITE_CONFIG.tutors.forEach((t, i) => {
-  const tags = t.tags.map(tg => `<span class="tutor-tag">${tg}</span>`).join('');
-  tutorGrid.innerHTML += `<div class="tutor-card reveal s${i+1}"><div class="tutor-avatar" style="background:${t.color}">${t.emoji}</div><div class="tutor-name">${t.name}</div><div class="tutor-role">${t.role}</div><div>${tags}</div><div class="tutor-bio">${t.bio}</div></div>`;
+// Tutors
+const tutorGrid=document.getElementById('tutors-grid');
+SITE_CONFIG.tutors.forEach((t,i)=>{
+  const stars='★'.repeat(Math.round(t.rating));
+  const tags=t.tags.slice(0,4).map(tg=>`<span class="tutor-tag">${tg}</span>`).join('');
+  const more=t.tags.length>4?`<span class="tutor-tag">+${t.tags.length-4}</span>`:'';
+  tutorGrid.insertAdjacentHTML('beforeend',`<div class="tutor-card reveal s${i+1}" onclick="openTutorModal(${i})"><div class="tutor-avatar" style="background:${t.color}">${t.emoji}</div><div class="tutor-name">${t.name}</div><div class="tutor-role">${t.role}</div><div class="tutor-tags">${tags}${more}</div><div class="tutor-bio">${t.bio}</div><div class="tutor-rating"><span class="stars">${stars}</span> ${t.rating}</div></div>`);
 });
 
-const impGrid = document.getElementById('impact-grid');
-SITE_CONFIG.impactStats.forEach((s, i) => {
-  impGrid.innerHTML += `<div class="impact-item reveal s${i+1}"><span class="impact-num counter" data-target="${s.target}" data-suffix="${s.suffix}">0</span><div class="impact-label">${s.label}</div></div>`;
+// FAQ
+const faqList=document.getElementById('faqList');
+SITE_CONFIG.faq.forEach((f,i)=>{
+  faqList.insertAdjacentHTML('beforeend',`<div class="faq-item reveal s${(i%8)+1}"><button class="faq-q" onclick="toggleFaq(this)"><span>${f.q}</span><span class="faq-icon">+</span></button><div class="faq-a">${f.a}</div></div>`);
 });
 
-const footerTop = document.getElementById('footer-top');
-let fHtml = `<div class="footer-brand"><a href="#hero" class="nav-logo" style="display:inline-flex"><div class="nav-logo-mark" style="background:linear-gradient(135deg,#2ec4b6,#5ba4cf)">AE</div><span class="nav-logo-text" style="color:#fff">Atlas <span>Edu</span></span></a><p>Free tutoring for every student — building communities of learners, one session at a time.</p><div class="footer-free">⭐ 100% Free, Always</div></div>`;
-Object.entries(SITE_CONFIG.footerLinks).forEach(([title, links]) => {
-  fHtml += `<div><div class="footer-nav-title">${title}</div><ul class="footer-nav-list">${links.map(l=>`<li><a href="${l.href}">${l.label}</a></li>`).join('')}</ul></div>`;
+// Impact
+const impGrid=document.getElementById('impact-grid');
+SITE_CONFIG.impactStats.forEach((s,i)=>{
+  impGrid.insertAdjacentHTML('beforeend',`<div class="impact-item reveal s${i+1}"><span class="impact-num counter" data-target="${s.target}" data-suffix="${s.suffix}">0</span><div class="impact-label">${s.label}</div></div>`);
 });
-footerTop.innerHTML = fHtml;
 
-/* ── STUDENT FORM — Google Apps Script ─────────────────────────
-   Uses no-cors mode + URLSearchParams so the Apps Script
-   doPost() receives a plain form-encoded body it can parse
-   with e.parameter. Since no-cors returns an opaque response
-   we optimistically show success after the fetch resolves.
-─────────────────────────────────────────────────────────────── */
-async function handleFormSubmit(e) {
+// Footer
+const footerTop=document.getElementById('footer-top');
+let fHtml=`<div class="footer-brand"><a href="#hero" class="nav-logo" style="display:inline-flex"><div class="nav-logo-mark" style="background:linear-gradient(135deg,#2ec4b6,#5ba4cf)">AE</div><span class="nav-logo-text" style="color:#fff">Atlas <span>Edu</span></span></a><p>Free tutoring for every student — building communities of learners, one session at a time.</p><div class="footer-free">⭐ 100% Free, Always</div></div>`;
+Object.entries(SITE_CONFIG.footerLinks).forEach(([title,links])=>{
+  fHtml+=`<div><div class="footer-nav-title">${title}</div><ul class="footer-nav-list">${links.map(l=>`<li><a href="${l.href}">${l.label}</a></li>`).join('')}</ul></div>`;
+});
+footerTop.innerHTML=fHtml;
+
+
+/* =============================================================
+   MODAL SYSTEM
+   ============================================================= */
+function openModal(id){
+  document.getElementById(id).classList.add('active');
+  document.getElementById('overlayBackdrop').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeModal(id){
+  document.getElementById(id).classList.remove('active');
+  if(!document.querySelector('.modal.active')) {
+    document.getElementById('overlayBackdrop').classList.remove('active');
+    document.body.style.overflow='';
+  }
+}
+function closeAllModals(){
+  document.querySelectorAll('.modal').forEach(m=>m.classList.remove('active'));
+  document.getElementById('overlayBackdrop').classList.remove('active');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeAllModals(); });
+
+function openTutorModal(index){
+  const t=SITE_CONFIG.tutors[index];
+  document.getElementById('tmAvatar').textContent       = t.emoji;
+  document.getElementById('tmName').textContent         = t.name;
+  document.getElementById('tmRole').textContent         = t.role;
+  document.getElementById('tmSessions').textContent     = t.sessions;
+  document.getElementById('tmRating').textContent       = t.rating+'★';
+  document.getElementById('tmSubjectCount').textContent = t.tags.length;
+  document.getElementById('tmAvail').textContent        = t.availability;
+  document.getElementById('tmBio').textContent          = t.fullBio;
+  document.getElementById('tmTags').innerHTML           = t.tags.map(tg=>`<span class="tutor-tag">${tg}</span>`).join('');
+  openModal('tutorModal');
+}
+
+
+/* =============================================================
+   NOTIFICATION SYSTEM
+   ============================================================= */
+function showNotif(type,title,msg,duration=5000){
+  const icons={success:'✅',error:'❌',info:'ℹ️',warning:'⚠️'};
+  const stack=document.getElementById('notifStack');
+  const id='notif-'+Date.now();
+  const el=document.createElement('div');
+  el.className=`notif ${type}`;
+  el.id=id;
+  el.innerHTML=`<div class="notif-icon">${icons[type]||'ℹ️'}</div><div class="notif-content"><div class="notif-title">${title}</div><div class="notif-msg">${msg}</div></div><button class="notif-close" onclick="dismissNotif('${id}')">✕</button><div class="notif-bar" style="animation-duration:${duration}ms"></div>`;
+  stack.appendChild(el);
+  setTimeout(()=>dismissNotif(id),duration);
+}
+function dismissNotif(id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.style.animation='notifOut .35s forwards';
+  setTimeout(()=>el.remove(),350);
+}
+
+
+/* =============================================================
+   FAQ ACCORDION
+   ============================================================= */
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+
+/* =============================================================
+   MOBILE SIDE DRAWER
+   ============================================================= */
+function toggleDrawer(){
+  const drawer=document.getElementById('sideDrawer');
+  const hbg=document.getElementById('hamburger');
+  const backdrop=document.getElementById('overlayBackdrop');
+  const isOpen=drawer.classList.contains('open');
+  drawer.classList.toggle('open');
+  hbg.classList.toggle('open');
+  if(!isOpen){
+    backdrop.classList.add('active');
+    backdrop.onclick=()=>{toggleDrawer();backdrop.onclick=closeAllModals;};
+    document.body.style.overflow='hidden';
+  } else {
+    backdrop.classList.remove('active');
+    backdrop.onclick=closeAllModals;
+    document.body.style.overflow='';
+  }
+}
+
+
+/* =============================================================
+   FORMS
+   ============================================================= */
+async function handleFormSubmit(e){
   e.preventDefault();
-
-  const firstName = document.getElementById('f-first').value.trim();
-  const lastName  = document.getElementById('f-last').value.trim();
-  const email     = document.getElementById('f-email').value.trim();
-  const grade     = document.getElementById('grade-select').value;
-  const subject   = document.getElementById('subject-select').value;
-  const errBox    = document.getElementById('form-error');
-
-  // ── Client-side validation ──
-  const errors = [];
-  if (!firstName)                                              errors.push('First name is required.');
-  if (!lastName)                                               errors.push('Last name is required.');
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))   errors.push('A valid email is required.');
-  if (!grade)                                                  errors.push('Please select a grade level.');
-  if (!subject)                                                errors.push('Please select a subject.');
-
-  if (errors.length) {
-    errBox.textContent   = errors.join('  ');
-    errBox.style.display = 'block';
-    return;
-  }
-  errBox.style.display = 'none';
-
-  const endpoint = SITE_CONFIG.formEndpoint;
-
-  // ── Demo mode: no endpoint configured ──
-  if (!endpoint) { showSuccess(); return; }
-
-  // ── Disable button & show spinner ──
-  const btn = document.getElementById('submit-btn');
-  document.getElementById('btn-label').style.display  = 'none';
-  document.getElementById('btn-spinner').style.display = 'inline';
-  btn.disabled = true;
-
-  try {
-    // Google Apps Script requires form-encoded body + no-cors mode
-    const formData = new URLSearchParams({
-      'First Name':  firstName,
-      'Last Name':   lastName,
-      'Email':       email,
-      'Grade Level': grade,
-      'Subject':     subject,
-    });
-
-    await fetch(endpoint, {
-      method: 'POST',
-      mode:   'no-cors',   // required for Apps Script — response will be opaque
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: formData.toString(),
-    });
-
-    // With no-cors we can't read the response status, so optimistically show success
-    showSuccess();
-
-  } catch (err) {
-    errBox.textContent   = 'Something went wrong — please try again or email us directly.';
-    errBox.style.display = 'block';
-    document.getElementById('btn-label').style.display  = 'inline';
-    document.getElementById('btn-spinner').style.display = 'none';
-    btn.disabled = false;
+  const firstName=document.getElementById('f-first').value.trim();
+  const lastName =document.getElementById('f-last').value.trim();
+  const email    =document.getElementById('f-email').value.trim();
+  const grade    =document.getElementById('grade-select').value;
+  const subject  =document.getElementById('subject-select').value;
+  const errBox   =document.getElementById('form-error');
+  const errors=[];
+  if(!firstName)errors.push('First name is required.');
+  if(!lastName) errors.push('Last name is required.');
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))errors.push('A valid email is required.');
+  if(!grade)  errors.push('Please select a grade level.');
+  if(!subject)errors.push('Please select a subject.');
+  if(errors.length){errBox.textContent=errors.join('  ');errBox.style.display='block';return;}
+  errBox.style.display='none';
+  const btn=document.getElementById('submit-btn');
+  document.getElementById('btn-label').style.display='none';
+  document.getElementById('btn-spinner').style.display='inline';
+  btn.disabled=true;
+  try{
+    const ep=SITE_CONFIG.formEndpoint;
+    if(ep){
+      await fetch(ep,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:new URLSearchParams({'First Name':firstName,'Last Name':lastName,'Email':email,'Grade Level':grade,'Subject':subject}).toString()});
+    }
+    document.getElementById('form-wrap').style.display='none';
+    document.getElementById('form-success').style.display='block';
+    launchConfetti();
+    showNotif('success','Request Sent! 🎉',`We'll match you with a tutor within 48 hours, ${firstName}!`);
+  }catch(err){
+    errBox.textContent='Something went wrong — please try again.';
+    errBox.style.display='block';
+    document.getElementById('btn-label').style.display='inline';
+    document.getElementById('btn-spinner').style.display='none';
+    btn.disabled=false;
   }
 }
 
-function showSuccess() {
-  document.getElementById('form-wrap').style.display    = 'none';
-  document.getElementById('form-success').style.display = 'block';
+async function handleVolunteerSubmit(e){
+  e.preventDefault();
+  const firstName=document.getElementById('v-first').value.trim();
+  const lastName =document.getElementById('v-last').value.trim();
+  const email    =document.getElementById('v-email').value.trim();
+  const school   =document.getElementById('v-school').value.trim();
+  const subject  =document.getElementById('v-subject').value.trim();
+  const errBox   =document.getElementById('vol-form-error');
+  const errors=[];
+  if(!firstName)errors.push('First name is required.');
+  if(!lastName) errors.push('Last name is required.');
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))errors.push('A valid email is required.');
+  if(errors.length){errBox.textContent=errors.join('  ');errBox.style.display='block';return;}
+  errBox.style.display='none';
+  const btn=document.getElementById('vol-submit-btn');
+  document.getElementById('vol-btn-label').style.display='none';
+  document.getElementById('vol-btn-spinner').style.display='inline';
+  btn.disabled=true;
+  try{
+    const ep=SITE_CONFIG.volunteerEndpoint;
+    if(ep){
+      await fetch(ep,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:new URLSearchParams({'First Name':firstName,'Last Name':lastName,'Email':email,'School':school,'Subjects':subject}).toString()});
+    }
+    document.getElementById('vol-form-wrap').style.display='none';
+    document.getElementById('vol-form-success').style.display='block';
+    launchConfetti();
+    showNotif('success','Application Sent! 🌟',`Welcome to the Atlas Edu family, ${firstName}! We'll be in touch soon.`);
+  }catch(err){
+    errBox.textContent='Something went wrong — please try again.';
+    errBox.style.display='block';
+    document.getElementById('vol-btn-label').style.display='inline';
+    document.getElementById('vol-btn-spinner').style.display='none';
+    btn.disabled=false;
+  }
 }
 
-/* ── INTERACTIONS ───────────────────────────────────────────── */
 
-// Cursor
-const cursor = document.getElementById('cursor');
-const ring   = document.getElementById('cursorRing');
+/* =============================================================
+   CONFETTI
+   ============================================================= */
+function launchConfetti(){
+  const container=document.getElementById('confettiContainer');
+  const colors=['#2ec4b6','#ffbf47','#5ba4cf','#1a3a5c','#ff6b6b','#51cf66'];
+  for(let i=0;i<80;i++){
+    const p=document.createElement('div');
+    p.className='confetti-piece';
+    const size=Math.random()*8+4;
+    p.style.cssText=`left:${Math.random()*100}vw;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${Math.random()*2+2}s;animation-delay:${Math.random()*.8}s;width:${size}px;height:${size}px;border-radius:${Math.random()>.5?'50%':'2px'};`;
+    container.appendChild(p);
+    setTimeout(()=>p.remove(),4000);
+  }
+}
+
+
+/* =============================================================
+   CUSTOM CURSOR
+   ============================================================= */
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
 let cx=0,cy=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => { cx=e.clientX; cy=e.clientY; cursor.style.left=cx+'px'; cursor.style.top=cy+'px'; });
-(function tick(){ rx+=(cx-rx)*.12; ry+=(cy-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(tick); })();
-const hoverSel = 'a,button,.subject-card,.tutor-card,.value-item,input,select';
-document.addEventListener('mouseover', e => { if(e.target.matches(hoverSel)){ cursor.style.width='20px';cursor.style.height='20px';cursor.style.background='var(--yellow)';ring.style.width='56px';ring.style.height='56px'; }});
-document.addEventListener('mouseout',  e => { if(e.target.matches(hoverSel)){ cursor.style.width='12px';cursor.style.height='12px';cursor.style.background='var(--teal)';ring.style.width='40px';ring.style.height='40px'; }});
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cursor.style.left=cx+'px';cursor.style.top=cy+'px';});
+document.addEventListener('mousedown',()=>cursor.classList.add('clicking'));
+document.addEventListener('mouseup',  ()=>cursor.classList.remove('clicking'));
+(function tick(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+const hs='a,button,.subject-card,.tutor-card,.value-item,input,select,.faq-q,.t-btn,.t-dot';
+document.addEventListener('mouseover',e=>{if(e.target.matches(hs)){cursor.style.width='20px';cursor.style.height='20px';cursor.style.background='var(--yellow)';ring.style.width='56px';ring.style.height='56px';}});
+document.addEventListener('mouseout', e=>{if(e.target.matches(hs)){cursor.style.width='12px';cursor.style.height='12px';cursor.style.background='var(--teal)';ring.style.width='40px';ring.style.height='40px';}});
 
-// Nav scroll shadow
-window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
 
-// Hero particle canvas
+/* =============================================================
+   SCROLL EVENTS
+   ============================================================= */
+window.addEventListener('scroll',()=>{
+  const total=document.body.scrollHeight-window.innerHeight;
+  document.getElementById('scrollProgress').style.width=(total>0?window.scrollY/total*100:0)+'%';
+  document.getElementById('backTop').classList.toggle('show',window.scrollY>600);
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+  let current='';
+  document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-100)current=s.id;});
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+});
+
+
+/* =============================================================
+   HERO PARTICLE CANVAS
+   ============================================================= */
 (function(){
-  const canvas = document.getElementById('hero-canvas');
-  const ctx    = canvas.getContext('2d');
-  let W, H, P  = [];
-  const COLS   = ['rgba(46,196,182,','rgba(91,164,207,','rgba(255,191,71,','rgba(26,58,92,'];
-  function resize(){ W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; }
-  function init(){
-    P=[];
-    const n=Math.min(Math.floor(W*H/18000),55);
-    for(let i=0;i<n;i++) P.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*3+1.5,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.25,c:COLS[Math.floor(Math.random()*4)],a:Math.random()*.4+.1,ph:Math.random()*Math.PI*2,ps:Math.random()*.02+.008});
-  }
+  const canvas=document.getElementById('hero-canvas'),ctx=canvas.getContext('2d');
+  let W,H,P=[];
+  const COLS=['rgba(46,196,182,','rgba(91,164,207,','rgba(255,191,71,','rgba(26,58,92,'];
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+  function init(){P=[];const n=Math.min(Math.floor(W*H/18000),55);for(let i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*3+1.5,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.25,c:COLS[Math.floor(Math.random()*4)],a:Math.random()*.4+.1,ph:Math.random()*Math.PI*2,ps:Math.random()*.02+.008});}
   function draw(){
     ctx.clearRect(0,0,W,H);
-    for(let i=0;i<P.length;i++) for(let j=i+1;j<P.length;j++){
-      const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<160){ctx.beginPath();ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);ctx.strokeStyle=`rgba(46,196,182,${(1-d/160)*.12})`;ctx.lineWidth=1;ctx.stroke();}
-    }
-    P.forEach(p=>{
-      p.ph+=p.ps;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r+Math.sin(p.ph)*.8,0,Math.PI*2);ctx.fillStyle=p.c+(p.a+Math.sin(p.ph)*.05)+')';ctx.fill();
-      p.x+=p.vx; p.y+=p.vy;
-      if(p.x<-10)p.x=W+10; if(p.x>W+10)p.x=-10;
-      if(p.y<-10)p.y=H+10; if(p.y>H+10)p.y=-10;
-    });
+    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<160){ctx.beginPath();ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);ctx.strokeStyle=`rgba(46,196,182,${(1-d/160)*.12})`;ctx.lineWidth=1;ctx.stroke();}}
+    P.forEach(p=>{p.ph+=p.ps;ctx.beginPath();ctx.arc(p.x,p.y,p.r+Math.sin(p.ph)*.8,0,Math.PI*2);ctx.fillStyle=p.c+(p.a+Math.sin(p.ph)*.05)+')';ctx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;});
     requestAnimationFrame(draw);
   }
   window.addEventListener('resize',()=>{resize();init();});
   resize();init();draw();
 })();
 
-// Scroll reveal
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-setTimeout(() => document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => revealObs.observe(el)), 80);
 
-// Animated counters
-const cntObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting){
-      const el=e.target, target=+el.dataset.target, sfx=el.dataset.suffix||'';
-      let t0=0;
-      (function step(ts){ if(!t0)t0=ts; const p=Math.min((ts-t0)/1600,1),ease=1-Math.pow(1-p,3); el.textContent=Math.floor(ease*target).toLocaleString()+sfx; if(p<1)requestAnimationFrame(step); else el.textContent=target.toLocaleString()+sfx; })(0);
-      cntObs.unobserve(el);
-    }
+/* =============================================================
+   SCROLL REVEAL
+   ============================================================= */
+const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+setTimeout(()=>document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>revealObs.observe(el)),80);
+
+
+/* =============================================================
+   ANIMATED COUNTERS
+   ============================================================= */
+const cntObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,target=+el.dataset.target,suffix=el.dataset.suffix||'';
+    let st=null;
+    function step(ts){if(!st)st=ts;const p=Math.min((ts-st)/1600,1),ease=1-Math.pow(1-p,3);el.textContent=Math.floor(ease*target).toLocaleString()+suffix;if(p<1)requestAnimationFrame(step);else el.textContent=target.toLocaleString()+suffix;}
+    requestAnimationFrame(step);
+    cntObs.unobserve(el);
   });
 },{threshold:.5});
 setTimeout(()=>document.querySelectorAll('.counter').forEach(el=>cntObs.observe(el)),200);
 
-// Toast helper
-function showToast(msg){
-  const toast=document.getElementById('toast'),parts=msg.split(' ');
-  document.getElementById('toast-icon').textContent=parts[0];
-  document.getElementById('toast-msg').textContent=parts.slice(1).join(' ');
-  toast.classList.add('show');
-  setTimeout(()=>toast.classList.remove('show'),4500);
-}
 
-// Hero visual parallax
-const hv=document.querySelector('.hero-visual');
-if(hv) window.addEventListener('scroll',()=>{ const s=window.scrollY; if(s<window.innerHeight) hv.style.transform=`translateY(calc(-50% + ${s*.08}px))`; });
-
-// Book sway
-let ba=0;(function sb(){ba+=.005;const svg=document.querySelector('.book-wrap svg');if(svg)svg.style.transform=`rotate(${Math.sin(ba)*2}deg)`;requestAnimationFrame(sb);})();
-
-// Subject card mouse-glow
+/* =============================================================
+   INTERACTIONS: subject glow, tutor tilt, float parallax
+   ============================================================= */
 document.addEventListener('mousemove',e=>{
   const c=e.target.closest('.subject-card');
   if(c){const r=c.getBoundingClientRect(),x=((e.clientX-r.left)/r.width)*100,y=((e.clientY-r.top)/r.height)*100;c.style.background=`radial-gradient(circle at ${x}% ${y}%,rgba(46,196,182,.09),rgba(255,255,255,.72) 60%)`;}
-});
-document.addEventListener('mouseout',e=>{const c=e.target.closest('.subject-card');if(c)c.style.background='';});
-
-// Tutor card 3D tilt
-document.addEventListener('mousemove',e=>{
-  const c=e.target.closest('.tutor-card');
-  if(c){const r=c.getBoundingClientRect(),x=(e.clientX-r.left-r.width/2)/(r.width/2),y=(e.clientY-r.top-r.height/2)/(r.height/2);c.style.transform=`translateY(-6px) rotateY(${x*6}deg) rotateX(${-y*4}deg)`;}
-});
-document.addEventListener('mouseout',e=>{const c=e.target.closest('.tutor-card');if(c)c.style.transform='';});
-
-// Float icon parallax
-document.addEventListener('mousemove',e=>{
+  const tc=e.target.closest('.tutor-card');
+  if(tc){const r=tc.getBoundingClientRect(),x=(e.clientX-r.left-r.width/2)/(r.width/2),y=(e.clientY-r.top-r.height/2)/(r.height/2);tc.style.transform=`translateY(-6px) rotateY(${x*6}deg) rotateX(${-y*4}deg)`;}
   const mx=(e.clientX/window.innerWidth-.5)*2,my=(e.clientY/window.innerHeight-.5)*2;
   document.querySelectorAll('.float-icon').forEach((ic,i)=>{const d=(i+1)*.5;ic.style.transform=`translateX(${mx*d*8}px) translateY(${my*d*5}px)`;});
 });
-
-// Active nav highlight
-window.addEventListener('scroll',()=>{
-  let cur='';
-  document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
-  document.querySelectorAll('.nav-links a').forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--teal)':'';});
+document.addEventListener('mouseout',e=>{
+  const c=e.target.closest('.subject-card');if(c)c.style.background='';
+  const tc=e.target.closest('.tutor-card');if(tc)tc.style.transform='';
 });
 
 
-async function handleVolunteerSubmit(e) {
-  e.preventDefault();
+/* =============================================================
+   HERO PARALLAX + BOOK SWAY
+   ============================================================= */
+const hv=document.querySelector('.hero-visual');
+if(hv)window.addEventListener('scroll',()=>{const s=window.scrollY;if(s<window.innerHeight)hv.style.transform=`translateY(calc(-50% + ${s*.08}px))`;});
+let ba=0;(function sb(){ba+=.005;const svg=document.querySelector('.book-wrap svg');if(svg)svg.style.transform=`rotate(${Math.sin(ba)*2}deg)`;requestAnimationFrame(sb);})();
 
-  const firstName = document.getElementById('v-first').value.trim();
-  const lastName  = document.getElementById('v-last').value.trim();
-  const email     = document.getElementById('v-email').value.trim();
-  const school    = document.getElementById('v-school').value.trim();
-  const subject   = document.getElementById('v-subject').value.trim();
-  const errBox    = document.getElementById('vol-form-error');
 
-  const errors = [];
-  if (!firstName) errors.push('First name is required.');
-  if (!lastName)  errors.push('Last name is required.');
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push('A valid email is required.');
-
-  if (errors.length) {
-    errBox.textContent   = errors.join('  ');
-    errBox.style.display = 'block';
-    return;
-  }
-  errBox.style.display = 'none';
-
-  const endpoint = SITE_CONFIG.volunteerEndpoint;
-
-  if (!endpoint) {
-    document.getElementById('vol-form-wrap').style.display    = 'none';
-    document.getElementById('vol-form-success').style.display = 'block';
-    return;
-  }
-
-  const btn = document.getElementById('vol-submit-btn');
-  document.getElementById('vol-btn-label').style.display   = 'none';
-  document.getElementById('vol-btn-spinner').style.display = 'inline';
-  btn.disabled = true;
-
-  try {
-    const formData = new URLSearchParams({
-      'First Name': firstName,
-      'Last Name':  lastName,
-      'Email':      email,
-      'School':     school,
-      'Subjects':   subject,
-    });
-
-    await fetch(endpoint, {
-      method:  'POST',
-      mode:    'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body:    formData.toString(),
-    });
-
-    document.getElementById('vol-form-wrap').style.display    = 'none';
-    document.getElementById('vol-form-success').style.display = 'block';
-
-  } catch (err) {
-    errBox.textContent   = 'Something went wrong — please try again.';
-    errBox.style.display = 'block';
-    document.getElementById('vol-btn-label').style.display   = 'inline';
-    document.getElementById('vol-btn-spinner').style.display = 'none';
-    btn.disabled = false;
-  }
-}
-
-// Page fade in
-document.body.style.opacity='0';document.body.style.transition='opacity .5s ease';
-window.addEventListener('load',()=>document.body.style.opacity='1');
+/* =============================================================
+   PAGE LOAD
+   ============================================================= */
+document.body.style.opacity='0';
+document.body.style.transition='opacity .5s ease';
+window.addEventListener('load',()=>{
+  requestAnimationFrame(()=>{document.body.style.opacity='1';});
+  setTimeout(()=>showNotif('info','Welcome to Atlas Edu 👋','Free tutoring for every student — explore subjects and meet your tutor!',6000),2000);
+});
 </script>
 </body>
 </html>
